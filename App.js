@@ -7,7 +7,7 @@ import { collection, addDoc, deleteDoc, doc, setDoc, updateDoc, onSnapshot } fro
 import UserProfile from './Screens /UserProfile';
 import AddSpot from './Screens /AddSpot';
 import Home from './Screens /Home';
-import Spot from './Screens /Spot';
+import Spot from './Screens /SpotDetails';
 
 
 

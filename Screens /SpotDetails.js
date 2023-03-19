@@ -24,7 +24,7 @@ const Spot = () => {
         try {
             const docRef = await addDoc(collection(firestore, "spots", "NoMPkzQyyUI0iEXkfNDW", "reviews"), {
                  comment: comment,
-                createdAt: serverTimestamp(),
+                 createdAt: serverTimestamp(),
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
@@ -80,7 +80,7 @@ const Spot = () => {
                 setRate(newText);
             }}
         ></TextInput>
-        
+
         <Button
             title="Add review"
             onPress={submitReview}
