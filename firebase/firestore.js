@@ -8,3 +8,12 @@ export async function addSpotFunction(data) {
       console.log(err);
     }
   }
+
+export async function addReviewFunction(data, spotId) {
+    try {
+      await addDoc(collection(firestore, "spots", spotId, "reviews"), data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+

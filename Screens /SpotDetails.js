@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { firestore } from "../firebase/firebase-setup";
 import React, { useEffect, useState } from "react";
+import { addReviewFunction } from "../firebase/firestore";
 
 const Spot = () => {
   // test read spots data from firestore
@@ -20,16 +21,12 @@ const Spot = () => {
   const [rate, setRate] = useState();
 
   // submit review
-    const submitReview = async () => {
-        try {
-            const docRef = await addDoc(collection(firestore, "spots", "NoMPkzQyyUI0iEXkfNDW", "reviews"), {
-                 comment: comment,
-                 createdAt: serverTimestamp(),
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
+    const submitReview = () => {
+      const data = {
+        comment: comment,
+        rate: rate,
+      };
+      addReviewFunction(data, "NoMPkzQyyUI0iEXkfNDW");   
     };
 
 
@@ -63,7 +60,7 @@ const Spot = () => {
   return (
     <View>
       <Text>Spot information : </Text>
-      <Text>=======following is review========</Text>
+      <Text>=======following is add review========</Text>
       <Text>Add review</Text>
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
@@ -85,6 +82,9 @@ const Spot = () => {
             title="Add review"
             onPress={submitReview}
         ></Button>
+
+        <Text>=======following is review list========</Text>
+        
     </View>
   );
 };
