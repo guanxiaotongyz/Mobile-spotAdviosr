@@ -5,7 +5,9 @@ import React,  { useEffect , useState} from 'react';
 import { firestore } from './firebase/firebase-setup';
 import { collection, addDoc, deleteDoc, doc, setDoc, updateDoc, onSnapshot } from "firebase/firestore"
 import UserProfile from './Screens /UserProfile';
+import AddSpot from './Screens /AddSpot';
 import Home from './Screens /Home';
+import Spot from './Screens /Spot';
 
 
 
@@ -40,7 +42,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
-      <Home />
+      <Spot />
       <StatusBar style="auto" />
     </View>
   );
