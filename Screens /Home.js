@@ -77,8 +77,8 @@ const Home = () => {
                 options={{
                     headerTitle: "Spot Advisor",
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons
-                            name="bread-slice" //todo
+                        <Entypo
+                            name="home"
                             color={color}
                             size={size}
                         />
@@ -91,8 +91,8 @@ const Home = () => {
                 options={{
                     headerTitle: "Nearby Spots",
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons
-                            name="bread-slice" //todo
+                        <Entypo
+                            name="location"
                             color={color}
                             size={size}
                         />
@@ -106,8 +106,8 @@ const Home = () => {
                 options={{
                     headerTitle: "Add Spot",
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons
-                            name="bread-slice" //todo
+                        <Ionicons
+                            name="add-circle-outline" //todo
                             color={color}
                             size={size}
                         />
@@ -121,8 +121,8 @@ const Home = () => {
                 options={{
                     headerTitle: "Favorite",
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons
-                            name="bread-slice" //todo
+                        <Entypo
+                            name="heart-outlined" //todo
                             color={color}
                             size={size}
                         />
@@ -136,7 +136,7 @@ const Home = () => {
                     headerTitle: "Profile",
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons
-                            name="bread-slice" //todo
+                            name="account-circle"
                             color={color}
                             size={size}
                         />

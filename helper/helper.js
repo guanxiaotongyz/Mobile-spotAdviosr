@@ -10,7 +10,8 @@ const headerStyle = {
     PURPLE: "#603F8B",
     ORANGE: "#FF8811",
     YELLOW: "#FFFF00",
-    LIGHT_PURPLE: "#D7A1F9"
+    LIGHT_PURPLE: "#D7A1F9",
+    RED: "#FF0000"
   };
   
   const pressStyle = { opacity: 0.5 }
