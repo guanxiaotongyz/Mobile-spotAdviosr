@@ -14,81 +14,44 @@ import { firestore } from "../firebase/firebase-setup";
 import React, { useEffect, useState } from "react";
 import { addReviewFunction } from "../firebase/firestore";
 // components
-import SpotList from "../components/SpotList";
+import {SpotList} from '../components/SpotList';
 
-const AllSpot = () => {
-  // test read spots data from firestore
-  const [review, setReview] = useState();
-  const [comment, setComment] = useState();
-  const [rate, setRate] = useState();
-
-  // submit review
-    const submitReview = () => {
-      const data = {
-        comment: comment,
-        rate: rate,
-      };
-      addReviewFunction(data, "NoMPkzQyyUI0iEXkfNDW");   
-    };
+const AllSpots = () => {
+  const [spots, setSpots] = useState([]);
+  const isFavortite = true;
 
 
-  // get subcollection review in spots  data from firestore
   useEffect(() => {
-    const q = query(
-      collection(firestore, "spots", "NoMPkzQyyUI0iEXkfNDW", "reviews")
-    );
+    const q = query(collection(firestore, 'spots'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      if (querySnapshot.empty) {
-        console.log("No matching documents.");
-        return;
-      }
-      // fix this , User just has one document
-      const review = [];
-      querySnapshot.forEach((doc) => {
-        //doc.data() is never undefined for query doc snapshots
-
-        review.push({ id: doc.id, ...doc.data() });
-      });
-      setReview(review);
+        if(querySnapshot.empty) {
+            console.log('No matching documents.');
+            return;
+        }
+        const spots = [];
+        querySnapshot.forEach((doc) => {
+            //doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            spots.push({id: doc.id, ...doc.data()})
+        });
+        setSpots(spots);
     });
 
     return () => {
-      unsubscribe();
-    };
-  }, []);
+        unsubscribe();
+    }
+}, [])
 
-  console.log("=====review======", review);
+
+   
+  console.log("=====spot======", );
 
   return (
     <View>
-      <Text>Spot information : </Text>
-      <Text>=======following is add review========</Text>
-      <Text>Add review</Text>
-      <TextInput
-        style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-        value={comment}
-        onChangeText={(newText) => {
-          setComment(newText);
-        }}
-      ></TextInput>
-      <Text>Rate</Text>
-        <TextInput
-            style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-            value={rate}
-            onChangeText={(newText) => {
-                setRate(newText);
-            }}
-        ></TextInput>
-
-        <Button
-            title="Add review"
-            onPress={submitReview}
-        ></Button>
-
-        <Text>=======following is review list========</Text>
-        
+      <Text>Allspots component test </Text> 
+      <SpotList spots={spots} isFavortite={isFavortite} />
     </View>
   );
 };
 
-export default AllSpot;
+export default AllSpots;

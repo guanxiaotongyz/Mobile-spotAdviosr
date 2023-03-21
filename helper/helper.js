@@ -14,7 +14,8 @@ const colors = {
   RED: "#FF0000",
   BLACK: "black",
   DARK_GREY: "#5A5A5A",
-  BLUE: "#60A3D9"
+  BLUE: "#60A3D9",
+  REBECAPURPLE : "#663399",
 };
 
 const pressStyle = { opacity: 0.5 }

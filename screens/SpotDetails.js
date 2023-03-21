@@ -13,8 +13,19 @@ import {
 import { firestore } from "../firebase/firebase-setup";
 import React, { useEffect, useState } from "react";
 import { addReviewFunction } from "../firebase/firestore";
+import { useNavigation } from "@react-navigation/native";
 
-const Spot = () => {
+const SpotDetails = (props) => {
+
+  const navigation = useNavigation();
+  const spotId = props.route.params.item.id;
+  console.log("==spotId==", spotId);
+  const item = props.route.params.item;
+  // read this spot data from firestore
+
+  // console.log("=====spot======", item);
+
+
   // test read spots data from firestore
   const [review, setReview] = useState();
   const [comment, setComment] = useState();
@@ -60,7 +71,12 @@ const Spot = () => {
   return (
     <View>
       <Text>Spot information : </Text>
+      <Text>Spot name : {item.name}</Text>
+      <Text>Spot description : {item.description}</Text>
+      <Text>Spot ID : {item.id}</Text>
+
       <Text>=======following is add review========</Text>
+      
       <Text>Add review</Text>
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
@@ -89,4 +105,4 @@ const Spot = () => {
   );
 };
 
-export default Spot;
+export default SpotDetails;

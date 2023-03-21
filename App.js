@@ -12,7 +12,6 @@ import {
   updateDoc,
   onSnapshot,
 } from "firebase/firestore";
-import UserProfile from "./screens/UserProfile";
 // navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -21,6 +20,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { headerStyle } from "./helper/helper";
 // screen components
 import Main from "./screens/Main";
+import SpotDetails from "./screens/SpotDetails";
+import UserProfile from "./screens/UserProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,7 @@ export default function App() {
           component={Main}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="SpotDetails" component={SpotDetails}/>
         <Stack.Screen name="UserProfile" component={UserProfile} />
       </Stack.Navigator>
     </NavigationContainer>
