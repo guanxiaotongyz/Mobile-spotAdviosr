@@ -15,13 +15,13 @@ import { StyleSheet } from 'react-native';
 import NoRecipePage from '../components/NoSpotPage';
 import { colors } from '../helper/helper';
 
-export default function MyRecipes({ navigation }) {
+export default function FavoriteSpots({ navigation }) {
     const [spots, setSpots] = useState([]);
     const [favoriteSpots, setFavoriteSpots] = useState([]);
 
 
     return (
-        <>
+        <View>
             {spots.length == 0 ? (
                 <>
                     <NoSpotPage>
@@ -55,7 +55,7 @@ export default function MyRecipes({ navigation }) {
                 )}
             />
             )}
-        </>
+        </View>
     );
 }
 
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
     },
     titleText: {
-        color: Colors.DescriptionText,
         marginLeft: 12,
         width: 140,
         fontWeight: 'bold',

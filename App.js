@@ -6,8 +6,14 @@ import { firestore } from './firebase/firebase-setup';
 import { collection, addDoc, deleteDoc, doc, setDoc, updateDoc, onSnapshot } from "firebase/firestore"
 import UserProfile from './screens /UserProfile';
 import Home from './screens /Home';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { headerStyle } from './helper/helper';
+import AddPic from './screens /AddPic';
+import SpotDetails from './screens /SpotDetails';
+import EditProfile from './screens /EditProfile';
 
-
+const Stack = createNativeStackNavigator();
 
 
 export default function App() {
