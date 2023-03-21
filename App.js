@@ -13,16 +13,13 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import UserProfile from "./screens/UserProfile";
-import AddSpot from "./screens/AddSpot";
-import Home from "./screens/Home";
-import Spot from "./screens/SpotDetails";
 // navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 //style
 import { headerStyle } from "./helper/helper";
-// components
+// screen components
 import Main from "./screens/Main";
 
 const Stack = createNativeStackNavigator();

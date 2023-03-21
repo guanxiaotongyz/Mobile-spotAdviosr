@@ -13,6 +13,8 @@ import {
 import { firestore } from "../firebase/firebase-setup";
 import React, { useEffect, useState } from "react";
 import { addReviewFunction } from "../firebase/firestore";
+// components
+import SpotList from "../components/SpotList";
 
 const AllSpot = () => {
   // test read spots data from firestore
