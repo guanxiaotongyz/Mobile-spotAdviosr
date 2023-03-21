@@ -37,27 +37,19 @@ useEffect(() => {
     }
 }, [])
 
-const screenOptions = {
-  ...headerStyle,
-  tabBarStyle: {
-      backgroundColor: colors.PURPLE,
-  },
-  tabBarActiveTintColor: colors.WHITE,
-  tabBarInactiveTintColor: colors.ORANGE,
-};
 
 
 
 console.log("=====spots======" , spots);
 // console.log("=====review======" , review);
   return (
-    // <View>
-    //   <Text>Home</Text>
-    // </View>
-    <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="UserProfile" component={UserProfile} />
-    </Tab.Navigator>
+    <View>
+      <Text>Home</Text>
+    </View>
+    // <Tab.Navigator >
+    //   <Tab.Screen name="Home" component={Home} />
+    //   <Tab.Screen name="UserProfile" component={UserProfile} />
+    // </Tab.Navigator>
   )
 }
 

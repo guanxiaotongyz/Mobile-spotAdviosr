@@ -12,14 +12,16 @@ import {
   updateDoc,
   onSnapshot,
 } from "firebase/firestore";
-import UserProfile from "./Screens /UserProfile";
-import AddSpot from "./Screens /AddSpot";
-import Home from "./Screens /Home";
-import Spot from "./Screens /SpotDetails";
+import UserProfile from "./screens /UserProfile";
+import AddSpot from "./screens /AddSpot";
+import Home from "./screens /Home";
+import Spot from "./screens /SpotDetails";
 // navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+//style
+import { headerStyle } from "./helper/helper";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +33,7 @@ export default function App() {
     //   <StatusBar style="auto" />
     // </View>
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={headerStyle}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="UserProfile" component={UserProfile} />
       </Stack.Navigator>
