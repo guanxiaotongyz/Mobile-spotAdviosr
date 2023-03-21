@@ -14,10 +14,11 @@ import { firestore } from "../firebase/firebase-setup";
 import React, { useEffect, useState } from "react";
 import { addReviewFunction } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
+// components
+import { ReviewList } from "../components/ReviewList";
 
 const SpotDetails = (props) => {
 
-  const navigation = useNavigation();
   const spotId = props.route.params.item.id;
   console.log("==spotId==", spotId);
   const item = props.route.params.item;
@@ -37,14 +38,15 @@ const SpotDetails = (props) => {
         comment: comment,
         rate: rate,
       };
-      addReviewFunction(data, "NoMPkzQyyUI0iEXkfNDW");   
+      // addReviewFunction(data, "NoMPkzQyyUI0iEXkfNDW"); 
+      addReviewFunction(data, spotId);   
     };
 
 
   // get subcollection review in spots  data from firestore
   useEffect(() => {
     const q = query(
-      collection(firestore, "spots", "NoMPkzQyyUI0iEXkfNDW", "reviews")
+      collection(firestore, "spots", spotId , "reviews")
     );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       if (querySnapshot.empty) {
@@ -76,7 +78,7 @@ const SpotDetails = (props) => {
       <Text>Spot ID : {item.id}</Text>
 
       <Text>=======following is add review========</Text>
-      
+
       <Text>Add review</Text>
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
@@ -100,6 +102,7 @@ const SpotDetails = (props) => {
         ></Button>
 
         <Text>=======following is review list========</Text>
+        <ReviewList review={review}  />
         
     </View>
   );
