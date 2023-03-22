@@ -1,6 +1,7 @@
 import { collection, addDoc, deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore"
 import { firestore } from "./firebase-setup"
 
+// add spot
 export async function addSpotFunction(data) {
     try {
       await addDoc(collection(firestore, "spots"), data);
@@ -9,6 +10,7 @@ export async function addSpotFunction(data) {
     }
   }
 
+// add review
 export async function addReviewFunction(data, spotId) {
     try {
       await addDoc(collection(firestore, "spots", spotId, "reviews"), data);
