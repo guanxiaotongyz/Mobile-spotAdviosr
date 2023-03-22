@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Alert, TextInput } from "react-native";
 import React, { useState } from "react";
 import PressableButton from "../components/PressableButton";
 // firebase
-import { deleteReviewFunction } from "../firebase/firestore";
+import { deleteReviewFunction , updateReviewFunction } from "../firebase/firestore";
 //color
 import { colors } from "../helper/helper";
 
@@ -24,6 +24,15 @@ const EditReview = (props) => {
   // pressHandler for Delete
     const pressDeleteHandler = () => { 
         deleteReviewFunction(spotItem.id, review.id); 
+        navigation.navigate("SpotDetails", { item: spotItem });
+    }
+  // pressHandler for Update
+    const pressUpdateHandler = () => {
+        const data = {
+            comment: comment,
+            rate: rate,
+        };
+        updateReviewFunction(spotItem.id, review.id, data);
         navigation.navigate("SpotDetails", { item: spotItem });
     }
 
@@ -59,6 +68,14 @@ const EditReview = (props) => {
             >
                 <Text>Delete</Text>
             </PressableButton>
+            {/* add Update PressableButton */}
+            <PressableButton
+                style={styles.button}
+                pressHandler={pressUpdateHandler}
+            >
+                <Text>Update</Text>
+            </PressableButton>
+            
         </View>
 
       </View>

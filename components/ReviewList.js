@@ -4,8 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { colors, pressedStyle } from "../helper/helper";
 import PressableButton from "./PressableButton";
 import { Entypo } from "@expo/vector-icons";
-// screen components
-import { deleteReviewFunction } from "../firebase/firestore";
+
 
 export function ReviewList({ review , spotItem }) {
 

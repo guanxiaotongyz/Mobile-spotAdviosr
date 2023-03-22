@@ -25,3 +25,12 @@ export async function deleteReviewFunction(spotId, reviewId) {
       console.log(err);
     }
   }
+
+// update review
+export async function updateReviewFunction(spotId, reviewId, data) {
+    try {
+      await updateDoc(doc(firestore, "spots", spotId, "reviews", reviewId), data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
