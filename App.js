@@ -22,6 +22,7 @@ import { headerStyle } from "./helper/helper";
 import Main from "./screens/Main";
 import SpotDetails from "./screens/SpotDetails";
 import UserProfile from "./screens/UserProfile";
+import EditReview from "./screens/EditReview";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,7 @@ export default function App() {
         />
         <Stack.Screen name="SpotDetails" component={SpotDetails}/>
         <Stack.Screen name="UserProfile" component={UserProfile} />
+        <Stack.Screen name="EditReview" component={EditReview} />
       </Stack.Navigator>
     </NavigationContainer>
   );

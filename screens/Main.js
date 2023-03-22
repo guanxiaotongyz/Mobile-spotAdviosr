@@ -90,7 +90,10 @@ const Main = () => {
           ),
         }}
       />
+
     </Tab.Navigator>
+
+
   );
 };
 

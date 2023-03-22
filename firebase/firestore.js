@@ -17,3 +17,11 @@ export async function addReviewFunction(data, spotId) {
     }
   }
 
+// delete review
+export async function deleteReviewFunction(spotId, reviewId) {
+    try {
+      await deleteDoc(doc(firestore, "spots", spotId, "reviews", reviewId));
+    } catch (err) {
+      console.log(err);
+    }
+  }

@@ -68,7 +68,7 @@ const SpotDetails = (props) => {
     };
   }, []);
 
-  console.log("=====review======", review);
+  console.log("=====review IN SpotDetail component ======", review);
 
   return (
     <View>

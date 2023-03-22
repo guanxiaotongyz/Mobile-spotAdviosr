@@ -4,8 +4,13 @@ import { useNavigation } from "@react-navigation/native";
 import { colors, pressedStyle } from "../helper/helper";
 import PressableButton from "./PressableButton";
 import { Entypo } from "@expo/vector-icons";
+// screen components
+import { EditReview } from "../screens/EditReview";
 
 export function ReviewList({ review }) {
+
+  const navigation = useNavigation();
+
   // check review is empty
   const isReviewEmpty = (review) => {
     if (review === undefined || review.length == 0) {
@@ -27,14 +32,23 @@ export function ReviewList({ review }) {
           data={review}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View
-              style={styles.item}
-              // pressHandler={() => navigation.navigate("SpotDetails", { item })}
-            >
-              <Text>Review ID : {item.id}</Text>
-              <Text>Comment: {item.comment}</Text>
-              <Text>Rate: {item.rate}</Text>
-            </View>
+            // <View
+            //   style={styles.item}
+            //   // pressHandler={() => navigation.navigate("SpotDetails", { item })}
+            // >
+            //   <Text>Review ID : {item.id}</Text>
+            //   <Text>Comment: {item.comment}</Text>
+            //   <Text>Rate: {item.rate}</Text>
+            // </View>
+            <PressableButton
+                    style={styles.item}
+                    pressHandler={() => navigation.navigate("EditReview", { item })}
+                >
+                  {/* {console.log("==item==", item)} */}
+                    <Text>ID : {item.id}</Text>
+                    <Text>Comment: {item.comment}</Text>
+                    <Text>Rate: {item.rate}</Text>
+                </PressableButton>   
           )}
         />
       )}
