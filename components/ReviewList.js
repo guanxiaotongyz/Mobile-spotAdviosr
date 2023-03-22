@@ -5,14 +5,14 @@ import { colors, pressedStyle } from "../helper/helper";
 import PressableButton from "./PressableButton";
 import { Entypo } from "@expo/vector-icons";
 // screen components
-import { EditReview } from "../screens/EditReview";
+import { deleteReviewFunction } from "../firebase/firestore";
 
-export function ReviewList({ review }) {
+export function ReviewList({ review , spotItem }) {
 
   const navigation = useNavigation();
 
   // check review is empty
-  const isReviewEmpty = (review) => {
+  const isReviewEmpty =  (review) => {
     if (review === undefined || review.length == 0) {
       return true;
     }
@@ -32,17 +32,9 @@ export function ReviewList({ review }) {
           data={review}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            // <View
-            //   style={styles.item}
-            //   // pressHandler={() => navigation.navigate("SpotDetails", { item })}
-            // >
-            //   <Text>Review ID : {item.id}</Text>
-            //   <Text>Comment: {item.comment}</Text>
-            //   <Text>Rate: {item.rate}</Text>
-            // </View>
             <PressableButton
                     style={styles.item}
-                    pressHandler={() => navigation.navigate("EditReview", { item })}
+                    pressHandler={() => navigation.navigate("EditReview", { item , spotItem })}
                 >
                   {/* {console.log("==item==", item)} */}
                     <Text>ID : {item.id}</Text>

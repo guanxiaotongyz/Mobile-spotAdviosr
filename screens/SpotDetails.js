@@ -20,8 +20,8 @@ import { ReviewList } from "../components/ReviewList";
 const SpotDetails = (props) => {
 
   const spotId = props.route.params.item.id;
-  console.log("==spotId==", spotId);
-  const item = props.route.params.item;
+  console.log("==spotId== in SpotDetail", spotId);
+  const spotItem = props.route.params.item;
   // read this spot data from firestore
 
   // console.log("=====spot======", item);
@@ -51,13 +51,13 @@ const SpotDetails = (props) => {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       if (querySnapshot.empty) {
         console.log("No matching documents.");
+        setReview([]);
         return;
       }
       // fix this , User just has one document
       const review = [];
       querySnapshot.forEach((doc) => {
         //doc.data() is never undefined for query doc snapshots
-
         review.push({ id: doc.id, ...doc.data() });
       });
       setReview(review);
@@ -68,14 +68,16 @@ const SpotDetails = (props) => {
     };
   }, []);
 
-  console.log("=====review IN SpotDetail component ======", review);
+
+
+  console.log("=====review in SpotDetail component ======", review);
 
   return (
     <View>
       <Text>Spot information : </Text>
-      <Text>Spot name : {item.name}</Text>
-      <Text>Spot description : {item.description}</Text>
-      <Text>Spot ID : {item.id}</Text>
+      <Text>Spot name : {spotItem.name}</Text>
+      <Text>Spot description : {spotItem.description}</Text>
+      <Text>Spot ID : {spotItem.id}</Text>
 
       <Text>=======following is add review========</Text>
 
@@ -102,7 +104,7 @@ const SpotDetails = (props) => {
         ></Button>
 
         <Text>=======following is review list========</Text>
-        <ReviewList review={review}  />
+        <ReviewList review={review}  spotItem = {spotItem}/>
         
     </View>
   );
