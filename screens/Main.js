@@ -11,6 +11,7 @@ import NearbySpots from "./NearbySpots";
 import { Entypo, Ionicons } from "@expo/vector-icons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
+
 const Tab = createBottomTabNavigator();
 
 const Main = () => {
