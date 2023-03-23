@@ -1,48 +1,69 @@
-import { View, Text, TextInput, Button, Alert } from "react-native";
+import { View, Text, TextInput, Button, Alert , StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { auth } from "../firebase/firebase-setup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-const Login = ({ navigation }) => {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const loginHandler = async () => {
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
-      //console.log(userCred);
+      console.log(userCred);
     } catch (err) {
-      console.log("login err ", err);
-      Alert.alert("Error", err.message);
+      console.log("login error", err);
     }
   };
-
-  const signupHandler = () => {
+  const signupHandlder = () => {
     navigation.replace("Signup");
   };
-
   return (
-    <View>
-      <Text>Email</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>Email:</Text>
       <TextInput
         value={email}
         onChangeText={(newEmail) => {
           setEmail(newEmail);
         }}
         placeholder="Email"
+        style={styles.input}
       />
-      <Text>Password</Text>
+      <Text style={styles.label}>Password:</Text>
       <TextInput
+        style={styles.input}
+        secureTextEntry={true}
+        placeholder="Password"
         value={password}
         onChangeText={(newPassword) => {
           setPassword(newPassword);
         }}
-        placeholder="Password"
       />
       <Button title="Login" onPress={loginHandler} />
-      <Button title="New User? Create an Account" onPress={signupHandler} />
+      <Button title="New User? Create An Account" onPress={signupHandlder} />
     </View>
   );
-};
+}
 
-export default Login;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "stretch",
+    justifyContent: "start",
+
+  },
+  input: {
+    borderColor: "#552055",
+    borderWidth: 2,
+    width: "90%",
+    marginTop: 10,
+    marginLeft: 10,
+    padding: 9,
+    borderRadius: 5,
+  },
+  label: {
+    marginTop: 10,
+    marginLeft: 10,
+    fontSize: 18,
+  },
+});
