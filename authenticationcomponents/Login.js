@@ -54,8 +54,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "stretch",
-    justifyContent: "start",
-
   },
   input: {
     borderColor: "#552055",
