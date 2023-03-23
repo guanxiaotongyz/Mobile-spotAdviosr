@@ -21,7 +21,6 @@ export function ReviewList({ review , spotItem }) {
   return (
     // create a list of spots and navigate to SpotDetails
     <View>
-      <Text>All ReviewList component test </Text>
       {isReviewEmpty(review) ? (
         <View style={styles.item}>
           <Text>Review is empty</Text>

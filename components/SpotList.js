@@ -10,40 +10,39 @@ export function SpotList({ spots, isFavortite }) {
 
   return (
     // create a list of spots and navigate to SpotDetails
-    <View>
-        <Text >All SpotList component test </Text>
+    <View style={styles.container}>
         <FlatList
             data={spots}
             keyExtractor={(item) => item.id}
+            numColumns={2}
             renderItem={({ item }) => (
                 <PressableButton
                     style={styles.item}
                     pressHandler={() => navigation.navigate("SpotDetails", { item })}
                 >
-                    <Text>ID : {item.id}</Text>
                     <Text>Name: {item.name}</Text>
-                    <Text>Description: {item.description}</Text>
+                    <Text>{item.reviews}</Text>
                 </PressableButton>        
             )}
         />
     </View>
-
-
     );
 }
 
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      marginTop: 20,
+      marginTop: 10
     },
     item: {
-      backgroundColor: colors.REBECAPURPLE,
+      flexBasis: "40%",
+      margin: "10%",
+      backgroundColor: colors.LIGHT_GREY,
       padding: 5,
       marginVertical: 8,
-      marginHorizontal: 10,
+      marginHorizontal: "5%",
       borderRadius: 5,
+      maxWidth: "40%"
     },
   });
 

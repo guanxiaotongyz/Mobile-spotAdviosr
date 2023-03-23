@@ -47,8 +47,7 @@ const AllSpots = () => {
   console.log("=====spot======", );
 
   return (
-    <View>
-      <Text>Allspots component test </Text> 
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <SpotList spots={spots} isFavortite={isFavortite} />
     </View>
   );

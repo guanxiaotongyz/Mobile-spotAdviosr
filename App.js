@@ -42,7 +42,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="SpotDetails" component={SpotDetails}/>
-        <Stack.Screen name="UserProfile" component={UserProfile} />
+        {/* <Stack.Screen name="UserProfile" component={UserProfile} /> */}
         <Stack.Screen name="EditReview" component={EditReview} />
       </Stack.Navigator>
     </NavigationContainer>

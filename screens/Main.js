@@ -20,7 +20,7 @@ const Main = () => {
     tabBarStyle: {
       backgroundColor: colors.WHITE,
     },
-    tabBarActiveTintColor: colors.BLUE,
+    tabBarActiveTintColor: colors.LIME_GREEN,
     tabBarInactiveTintColor: colors.DARK_GREY,
   };
 
@@ -54,7 +54,7 @@ const Main = () => {
           headerTitle: "Add Spot",
           tabBarIcon: ({ color, size }) => (
             <Ionicons
-              name="add-circle-outline" //todo
+              name="add-circle-outline"
               color={color}
               size={size}
             />
@@ -69,7 +69,7 @@ const Main = () => {
           headerTitle: "Favorite",
           tabBarIcon: ({ color, size }) => (
             <Entypo
-              name="heart-outlined" //todo
+              name="heart-outlined" 
               color={color}
               size={size}
             />
