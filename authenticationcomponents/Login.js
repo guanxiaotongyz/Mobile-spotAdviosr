@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Button, Alert } from "react-native";
 import React, { useState } from "react";
 import { auth } from "../firebase/firebase-setup";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -13,6 +13,7 @@ const Login = ({ navigation }) => {
       //console.log(userCred);
     } catch (err) {
       console.log("login err ", err);
+      Alert.alert("Error", err.message);
     }
   };
 
