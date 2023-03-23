@@ -33,19 +33,19 @@ export default function UserProfile() {
       unsubscribe();
     };
   }, []);
-  
+
 
 
   return (
     <View>
       {/* <Text>{auth.currentUser.email}</Text>
       <Text>{auth.currentUser.uid}</Text>  */}
+      <Text>User Profile</Text>
       <Text>{userInfo.uid}</Text>
       <Text>{userInfo.email}</Text>
       <Text>{userInfo.name}</Text>
       <Text>{userInfo.gender}</Text>
       <Text>{userInfo.age}</Text>
-      <Text>User Profile</Text>
     </View>
   );
 }

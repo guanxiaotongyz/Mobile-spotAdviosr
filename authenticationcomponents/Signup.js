@@ -113,12 +113,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "stretch",
   },
   input: {
     borderColor: "#552055",
     borderWidth: 2,
-    width: "90%",
+    width: 350,
     marginTop: 10,
     marginLeft: 10,
     padding: 9,
