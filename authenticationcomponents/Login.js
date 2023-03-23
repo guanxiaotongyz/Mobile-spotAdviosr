@@ -1,10 +1,21 @@
 import { View, Text, TextInput, Button } from "react-native";
 import React, { useState } from "react";
+import { auth } from "../firebase/firebase-setup";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const loginHandler = () => {};
+
+  const loginHandler = async () => {
+    try {
+      const userCred = await signInWithEmailAndPassword(auth, email, password);
+      //console.log(userCred);
+    } catch (err) {
+      console.log("login err ", err);
+    }
+  };
+
   const signupHandler = () => {
     navigation.replace("Signup");
   };
@@ -14,7 +25,7 @@ const Login = ({ navigation }) => {
       <Text>Email</Text>
       <TextInput
         value={email}
-        onChange={(newEmail) => {
+        onChangeText={(newEmail) => {
           setEmail(newEmail);
         }}
         placeholder="Email"
@@ -22,7 +33,7 @@ const Login = ({ navigation }) => {
       <Text>Password</Text>
       <TextInput
         value={password}
-        onChange={(newPassword) => {
+        onChangeText={(newPassword) => {
           setPassword(newPassword);
         }}
         placeholder="Password"

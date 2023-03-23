@@ -21,7 +21,11 @@ export default function Signup({ navigation }) {
           return;
       }
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
+        const userCred = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
       } catch (err) {
         console.log("Auth error ", err);
         Alert.alert("Error", err.message);
