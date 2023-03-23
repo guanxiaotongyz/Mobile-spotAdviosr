@@ -12,6 +12,7 @@ export default function Login({ navigation }) {
       console.log(userCred);
     } catch (err) {
       console.log("login error", err);
+      Alert.alert("Error", err.message);
     }
   };
   const signupHandlder = () => {
@@ -22,6 +23,7 @@ export default function Login({ navigation }) {
       <Text style={styles.label}>Email:</Text>
       <TextInput
         value={email}
+        autoCapitalize='none'
         onChangeText={(newEmail) => {
           setEmail(newEmail);
         }}
@@ -33,6 +35,7 @@ export default function Login({ navigation }) {
         style={styles.input}
         secureTextEntry={true}
         placeholder="Password"
+        autoCapitalize='none'
         value={password}
         onChangeText={(newPassword) => {
           setPassword(newPassword);

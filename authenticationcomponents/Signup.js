@@ -25,6 +25,7 @@ export default function Signup({ navigation }) {
       console.log(userCred);
     } catch (err) {
       console.log("sign up error ", err);
+      Alert.alert("Error", err.message);
     }
   };
   return (
@@ -33,6 +34,7 @@ export default function Signup({ navigation }) {
       <TextInput
         style={styles.input}
         value={email}
+        autoCapitalize="none"
         onChangeText={(newEmail) => {
           setEmail(newEmail);
         }}
@@ -42,6 +44,7 @@ export default function Signup({ navigation }) {
       <TextInput
         style={styles.input}
         secureTextEntry={true}
+        autoCapitalize='none'
         placeholder="New Password"
         value={password}
         onChangeText={(newPassword) => {
