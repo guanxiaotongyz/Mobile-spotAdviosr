@@ -9,7 +9,9 @@ export default function Login({ navigation }) {
   const loginHandler = async () => {
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userCred);
+      console.log("userCred" , userCred);
+      console.log("userCred.user.uid" , userCred.user.uid);
+      console.log("userCred.user.email" , userCred.user.email);
     } catch (err) {
       console.log("login error", err);
       Alert.alert("Error", err.message);
