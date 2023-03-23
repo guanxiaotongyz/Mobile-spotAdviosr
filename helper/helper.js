@@ -16,6 +16,7 @@ const headerStyle = {
     DARK_GREY: "#5A5A5A",
     BLUE: "#60A3D9",
     REBECAPURPLE : "#663399",
+    LIGHTGREY : "#D3D3D3",
   };
   
   const pressStyle = { opacity: 0.5 }

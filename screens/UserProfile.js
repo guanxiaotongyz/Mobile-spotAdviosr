@@ -1,11 +1,12 @@
-import { View, Text, Alert } from "react-native";
+import { View, Text, Alert , StyleSheet} from "react-native";
 import React from "react";
 import { auth, firestore } from "../firebase/firebase-setup";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
+import Card from "../components/Card";
+import { colors } from "../helper/helper";
 
 export default function UserProfile() {
-
   const [userInfo, setUserInfo] = useState([]);
 
   useEffect(() => {
@@ -34,18 +35,38 @@ export default function UserProfile() {
     };
   }, []);
 
-
-
   return (
     <View>
       {/* <Text>{auth.currentUser.email}</Text>
       <Text>{auth.currentUser.uid}</Text>  */}
-      <Text>User Profile</Text>
-      <Text>{userInfo.uid}</Text>
-      <Text>{userInfo.email}</Text>
-      <Text>{userInfo.name}</Text>
-      <Text>{userInfo.gender}</Text>
-      <Text>{userInfo.age}</Text>
+      <Card>
+        <Text style = {styles.TextTitle}>User Profile</Text>
+        {/* <Text style = {styles.Text}>{userInfo.uid}</Text> */}
+        <Text style = {styles.Text}>Email: {userInfo.email}</Text>
+        <Text style = {styles.Text}>Nick Name: {userInfo.name}</Text>
+        <Text style = {styles.Text}>Gender: {userInfo.gender}</Text>
+        <Text style = {styles.Text}>Age: {userInfo.age}</Text>
+      </Card>
+      <Text>====following is your own create spot========</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  TextTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: colors.BLACK,
+    margin: 10,
+    marginLeft: 70,
+  },
+  Text: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: colors.BLACK,
+    marginLeft: 10,
+  },
+
+  
+});
+
