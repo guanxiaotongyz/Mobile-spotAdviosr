@@ -21,7 +21,7 @@ const normalBtn = {
     padding: 12,
     height: 50,
     minWidth: 100,
-    borderRadius: 5,
+    borderRadius: 7,
     shadowRadius: 3,
     shadowOpacity: 0.1,
     margin: 12,

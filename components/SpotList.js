@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   item: {
-    flexBasis: "40%",
+    flexBasis: "42%",
     margin: "9%",
     backgroundColor: colors.LIGHT_GREY,
     padding: 5,
     marginVertical: 10,
-    marginHorizontal: "3.6%",
+    marginHorizontal: "2.5%",
     borderRadius: 3,
     maxWidth: 170,
     height: 160,
@@ -77,7 +77,9 @@ const styles = StyleSheet.create({
     
   },
   name: {
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    fontWeight: "bold",
+    marginLeft: "2%"
   },
   backgroundImage: {
     width: "100%",
