@@ -18,7 +18,9 @@ const colors = {
   REBECAPURPLE : "#663399",
   LIME_GREEN: "#76B947",
   SEAFOAM_GREEN: "#B2D2A4",
-  LIGHT_GREY: "#C5C5C5"
+  LIGHT_GREY: "#C5C5C5",
+  IVOEY: "#EEEDE7",
+  STARYELLOW: "#FEDE00"
 };
 
 const pressStyle = { opacity: 0.5 }

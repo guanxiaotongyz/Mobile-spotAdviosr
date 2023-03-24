@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Alert, TextInput } from "react-native";
 import React, { useState } from "react";
 import PressableButton from "../components/PressableButton";
 // firebase
-import { deleteReviewFunction , updateReviewFunction } from "../firebase/firestore";
+import { deleteReviewFunction, updateReviewFunction } from "../firebase/firestore";
 //color
 import { colors } from "../helper/helper";
 
@@ -22,26 +22,25 @@ const EditReview = (props) => {
   const [rate, setRate] = useState(review.rate);
 
   // pressHandler for Delete
-    const pressDeleteHandler = () => { 
-        deleteReviewFunction(spotItem.id, review.id); 
-        navigation.navigate("SpotDetails", { item: spotItem });
-    }
+  const pressDeleteHandler = () => {
+    deleteReviewFunction(spotItem.id, review.id);
+    navigation.navigate("SpotDetails", { item: spotItem });
+  }
   // pressHandler for Update
-    const pressUpdateHandler = () => {
-        const data = {
-            comment: comment,
-            rate: rate,
-        };
-        updateReviewFunction(spotItem.id, review.id, data);
-        navigation.navigate("SpotDetails", { item: spotItem });
-    }
+  const pressUpdateHandler = () => {
+    const data = {
+      comment: comment,
+      rate: rate,
+    };
+    updateReviewFunction(spotItem.id, review.id, data);
+    navigation.navigate("SpotDetails", { item: spotItem });
+  }
 
 
   return (
     <View>
-      <Text>EditReview</Text>
 
-      <View>
+      <View style={styles.container}>
         <View style={styles.info}>
           <Text>Comment: </Text>
           <TextInput
@@ -52,7 +51,7 @@ const EditReview = (props) => {
         </View>
 
         <View style={styles.info}>
-          <Text>Rate: </Text>
+          <Text style={styles.rate}>Rate: </Text>
           <TextInput
             style={styles.input}
             value={rate}
@@ -61,21 +60,21 @@ const EditReview = (props) => {
         </View>
 
         <View style={styles.info}>
-            {/* add Delete PressableButton */}
-            <PressableButton
-                style={styles.button}
-                pressHandler={pressDeleteHandler}
-            >
-                <Text>Delete</Text>
-            </PressableButton>
-            {/* add Update PressableButton */}
-            <PressableButton
-                style={styles.button}
-                pressHandler={pressUpdateHandler}
-            >
-                <Text>Update</Text>
-            </PressableButton>
-            
+          {/* add Delete PressableButton */}
+          <PressableButton
+            style={styles.button}
+            pressHandler={pressDeleteHandler}
+          >
+            <Text>Delete</Text>
+          </PressableButton>
+          {/* add Update PressableButton */}
+          <PressableButton
+            style={styles.button}
+            pressHandler={pressUpdateHandler}
+          >
+            <Text>Update</Text>
+          </PressableButton>
+
         </View>
 
       </View>
@@ -84,6 +83,12 @@ const EditReview = (props) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 10,
+  },
+  rate: {
+    marginRight: 32
+  },
   input: {
     borderWidth: 1,
     borderColor: "#777",
@@ -91,20 +96,20 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 200,
   },
-    info: {
+  info: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
-    },
-    button: {
-        backgroundColor: colors.LIGHT_BLUE,
-        padding: 10,
-        marginVertical: 5,
-        marginHorizontal: 20,
-        flexDirection: "row",
-        justifyContent: "space-between",
-      },
+  },
+  button: {
+    backgroundColor: colors.LIGHT_BLUE,
+    padding: 10,
+    marginVertical: 5,
+    marginHorizontal: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 
 });
 

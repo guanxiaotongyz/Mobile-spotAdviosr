@@ -41,6 +41,8 @@ const SpotDetails = (props) => {
         };
         // addReviewFunction(data, "NoMPkzQyyUI0iEXkfNDW"); 
         addReviewFunction(data, spotId);
+        setComment();
+        setRate()
     };
 
 
@@ -82,6 +84,9 @@ const SpotDetails = (props) => {
             <Text style={styles.name}>
                 Name : {spotItem.name}
             </Text>
+            <Text style={styles.city}>
+                City : {spotItem.city}
+            </Text>
             <Text style={styles.description}>
                 Description : {spotItem.description}
             </Text>
@@ -89,18 +94,18 @@ const SpotDetails = (props) => {
 
             <Text style={styles.reviewText}>Reviews</Text>
 
-            <Text>Add review</Text>
             <TextInput
-                style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+                style={styles.addreview}
                 value={comment}
+                placeholder="Add your review"
                 onChangeText={(newText) => {
                     setComment(newText);
                 }}
             ></TextInput>
-            <Text>Rate</Text>
             <TextInput
-                style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
                 value={rate}
+                style={styles.rate}
+                placeholder="Add your rate from 1 to 5"
                 onChangeText={(newText) => {
                     setRate(newText);
                 }}
@@ -128,16 +133,41 @@ const styles = StyleSheet.create({
     },
     name: {
         fontWeight: "bold",
-        fontSize: 20
+        fontSize: 20,
+        marginLeft: 10,
+        marginTop: 5
     },
     description: {
-
-    }
-    ,
+        marginLeft: 10,
+        marginTop: 5
+    },
+    city: {
+        marginLeft: 10,
+        marginTop: 5
+    },
     reviewText: {
         fontWeight: "bold",
         fontSize: 20,
-        marginBottom: 5
+        marginBottom: 5,
+        marginLeft: 10
+    },
+    addreview: {
+        height: 40,
+        borderColor: "gray",
+        borderWidth: 1,
+        margin: 10,
+        padding: 10,
+        paddingLeft: 10,
+        maxWidth: "80%"
+    },
+    rate: {
+        height: 40,
+        borderColor: "gray",
+        borderWidth: 1,
+        margin: 10,
+        padding: 10,
+        paddingLeft: 10,
+        maxWidth: "50%"
     }
 
 });
