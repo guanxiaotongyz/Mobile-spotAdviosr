@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     flexDirection: "row",
     justifyContent: "space-between",
+    // borderRadius: 5
   },
 
 });
