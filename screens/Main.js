@@ -10,7 +10,9 @@ import AllSpots from "./AllSpots";
 import NearbySpots from "./NearbySpots";
 import { Entypo, Ionicons } from "@expo/vector-icons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
+// firebase
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase-setup";
 
 const Tab = createBottomTabNavigator();
 
@@ -53,11 +55,7 @@ const Main = () => {
         options={{
           headerTitle: "Add Spot",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="add-circle-outline"
-              color={color}
-              size={size}
-            />
+            <Ionicons name="add-circle-outline" color={color} size={size} />
           ),
         }}
       />
@@ -68,19 +66,28 @@ const Main = () => {
         options={{
           headerTitle: "Favorite",
           tabBarIcon: ({ color, size }) => (
-            <Entypo
-              name="heart-outlined" 
-              color={color}
-              size={size}
-            />
+            <Entypo name="heart-outlined" color={color} size={size} />
           ),
         }}
       />
 
       <Tab.Screen
-        name="Profile"
+        name="UserProfile"
         component={UserProfile}
         options={{
+          headerRight: () => {
+            return (
+              <Ionicons
+                name="exit"
+                size={24}
+                color={colors.BLUE}
+                onPress={() => {
+                  signOut(auth);
+                }}
+              />
+            );
+          },
+
           headerTitle: "Profile",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
@@ -89,12 +96,10 @@ const Main = () => {
               size={size}
             />
           ),
+
         }}
       />
-
     </Tab.Navigator>
-
-
   );
 };
 

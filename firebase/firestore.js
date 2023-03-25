@@ -36,3 +36,12 @@ export async function updateReviewFunction(spotId, reviewId, data) {
       console.log(err);
     }
   }
+
+// add userInfo to user collection
+export async function addUserInfoFunction(data) {
+  try {
+    await setDoc(doc(firestore, "user", data.uid), data);
+  } catch (err) {
+    console.log(err);
+  }
+}
