@@ -43,7 +43,6 @@ export function ReviewList({ review, spotItem }) {
                 color={colors.STARYELLOW}
                 size={16} />
               </View>
-
             </PressableButton>
           )}
         />
