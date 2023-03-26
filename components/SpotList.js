@@ -33,6 +33,10 @@ export function SpotList({ spots, isFavortite }) {
                 <View>
                 <Text style={styles.name}>{item.name}</Text>
                 </View>
+
+                <View>
+                <Text style={styles.name}>{item.uid}</Text>
+                </View>
                 
                 <View style={styles.cityContainer}>
                   <Ionicons
