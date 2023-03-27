@@ -17,6 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 // components
 import { ReviewList } from "../components/ReviewList";
 import { Image, StyleSheet } from "react-native";
+import WeatherApi from "../components/WeatherApi";
 
 const SpotDetails = (props) => {
 
@@ -91,6 +92,10 @@ const SpotDetails = (props) => {
                 Description : {spotItem.description}
             </Text>
             <Text></Text>
+
+            <View>
+                <WeatherApi city={spotItem.city} />
+            </View>
 
             <Text style={styles.reviewText}>Reviews</Text>
 
