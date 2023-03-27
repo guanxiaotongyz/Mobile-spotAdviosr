@@ -25,18 +25,16 @@ const WeatherApi = ({ city }) => {
   console.log("city", city);
 
   return (
-    <View style={styles.container}>
+    <View>
       {weatherData ? (
         <>
-          <Text>Weather Information</Text>
-          <Text style={styles.city}>{weatherData.name}</Text>
+          <Text style={styles.name}>Weather Information : </Text>
           <Text style={styles.temperature}>
-            {Math.round(weatherData.main.temp)}°C
+            Current temperature: {Math.round(weatherData.main.temp)}°C
           </Text>
-          <Text style={styles.description}>
-            {weatherData.weather[0].description}
+          <Text style={styles.temperature}>
+            Current weather: {weatherData.weather[0].description}
           </Text>
-
         </>
       ) : (
         <Text>Loading...</Text>
@@ -46,17 +44,15 @@ const WeatherApi = ({ city }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
-  city: {
-    fontSize: 12,
+  name: {
+    fontSize: 15,
+    marginLeft: 5,
     fontWeight: "bold",
   },
   temperature: {
     fontSize: 12,
     fontWeight: "bold",
-  },
-  description: {
-    fontSize: 12,
+    marginLeft: 5,
   },
 });
 
