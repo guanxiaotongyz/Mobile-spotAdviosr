@@ -6,14 +6,14 @@ import {colors} from '../helper/helper';
 const Card = (props) => {
    
    const style ={
-      marginTop: 20,
-      marginHorizontal: 70,
+      marginTop: props.margintop || 20,
+      marginHorizontal: props.marginhorizontal ||  70,
       alignItems: "flex-start",
       justifyContent: "flex-start",
       height: props.heightValue || 150,
       width: props.widthValue || 250,
       borderRadius: 10,
-      backgroundColor: colors.LIGHTGREY,
+      backgroundColor: props.backgroundColor || colors.LIGHTGREY,
       shadowRadius: 10,
       shadowOpacity: 0.1,
       elevation: 10,

@@ -22,6 +22,8 @@ const colors = {
   IVOEY: "#EEEDE7",
   STARYELLOW: "#FEDE00",
   LIGHTGREY : "#D3D3D3",
+  LIGHTGREEN : "#90EE90",
+  
 };
 
 const pressStyle = { opacity: 0.5 }
