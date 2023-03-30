@@ -1,6 +1,6 @@
 # Mobile-spotAdvisor
 
-- **Group**: 3
+- **Group**: 8
 - **Members**:
   - Xiaotong Guan <guan.xiao@northeastern.edu>
   - Yudong Yang	<yang.yud@northeastern.edu>
