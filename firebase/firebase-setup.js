@@ -10,6 +10,9 @@ import {
   appId,
 } from "@env";
 import React from "react";
+// https://firebase.google.com/docs/web/setup#available-libraries
+import {initializeAuth,getReactNativePersistence } from "firebase/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const firebaseConfig = {
   apiKey: apiKey,
@@ -25,3 +28,6 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Cloud Firestore through Firebase
 export const firestore = getFirestore(app);
+export const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage),
+});
