@@ -1,18 +1,27 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import {
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId,
+} from "@env";
+import React from "react";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {initializeAuth,getReactNativePersistence } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD9lpNVN22HxNO0xnP33Z8kmKyyqAGuzOg",
-  authDomain: "trip-advisor-curd.firebaseapp.com",
-  projectId: "trip-advisor-curd",
-  storageBucket: "trip-advisor-curd.appspot.com",
-  messagingSenderId: "843970286871",
-  appId: "1:843970286871:web:6d6a6dc2cfa5e3087d1352"
+  apiKey: apiKey,
+  authDomain: authDomain,
+  projectId: projectId,
+  storageBucket: storageBucket,
+  messagingSenderId: messagingSenderId,
+  appId: appId,
 };
 
 // Initialize Firebase
