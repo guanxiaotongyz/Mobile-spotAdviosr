@@ -59,7 +59,6 @@ In the first iteration, we have done these work below:
 - U: update the data like reviews and rates
 - D: delete the data like reviews and rates
 - Write the screen for the basic function
-- 
 
 ### Xiaotong Guan
 1. implement the screens : Addspot, Allspots, EditReview
