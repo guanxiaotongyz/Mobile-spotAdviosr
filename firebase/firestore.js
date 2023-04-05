@@ -5,7 +5,9 @@ import {
   doc,
   setDoc,
   updateDoc,
-  arrayUnion
+  getDoc,
+  arrayUnion,
+  arrayRemove
 } from "firebase/firestore";
 import { auth, firestore } from "./firebase-setup";
 
@@ -66,23 +68,32 @@ export async function addUserInfoFunction(data) {
 }
 
 
-export async function addFavoriteFunction(data) {
+export async function addFavoriteFunction(itemId) {
   try {
     const userRef = doc(firestore, "user", auth.currentUser.uid);
-    await updateDoc(userRef, {
-      favorite: arrayUnion(data)
-    });
+    const userSnapshot = await getDoc(userRef);
+    const favorites = userSnapshot.data().favorite || [];
+    const itemRef = doc(firestore, "item", itemId);
+    if (!favorites.some(fav => fav.id === itemId)) {
+      await updateDoc(userRef, {
+        favorite: [...favorites, itemRef],
+      });
+    }
   } catch (err) {
     console.log(err);
   }
 }
 
 
-export async function updateFavoriteFunction(favoriteId, newData) {
+export async function removeFavoriteFunction(itemId) {
   try {
-    const favoriteRef = doc(firestore, "user", auth.currentUser.uid, "favorite", favoriteId);
-    await updateDoc(favoriteRef, {
-      ...newData
+    const userRef = doc(firestore, "user", auth.currentUser.uid);
+    const userSnapshot = await getDoc(userRef);
+    const favorites = userSnapshot.data().favorite || [];
+    const itemRef = doc(firestore, "item", itemId);
+    const updatedFavorites = favorites.filter(fav => fav.id !== itemId);
+    await updateDoc(userRef, {
+      favorite: updatedFavorites,
     });
   } catch (err) {
     console.log(err);

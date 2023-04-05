@@ -4,10 +4,13 @@ import { useNavigation } from "@react-navigation/native";
 import { colors } from "../helper/helper";
 import PressableButton from "./PressableButton";
 import { Ionicons, Entypo } from "@expo/vector-icons";
-import { collection, query, onSnapshot, doc, getDocs, where } from "firebase/firestore";
+import { collection, query, onSnapshot, doc, getDocs, where} from "firebase/firestore";
 import { firestore, auth } from "../firebase/firebase-setup";
+import { removeFavoriteFunction } from "../firebase/firestore";
+import { addFavoriteFunction } from "../firebase/firestore";
 
-export function SpotList({ spots, handlePress }) {
+
+export function SpotList({ spots, screenName }) {
   const navigation = useNavigation();
   const [refId, setRefId] = useState([]);
 
@@ -18,17 +21,19 @@ export function SpotList({ spots, handlePress }) {
         collection(firestore, "user"),
         where("uid", "==", auth.currentUser.uid)
       ),
-      
+
       (querySnapshot) => {
         if (querySnapshot.empty) {
           console.log("querySnapshot t is empty");
         }
         const ref = [];
         const refs = querySnapshot.docs[0].data().favorite;
-        refs.forEach((item) => {
-          const id = item._key.path.segments[item._key.path.segments.length - 1];
-          ref.push(id);
-        })
+        if (refs !== null) {
+          refs.forEach((item) => {
+            const id = item._key.path.segments[item._key.path.segments.length - 1];
+            ref.push(id);
+          })
+        }
         setRefId(ref);
       },
 
@@ -45,13 +50,13 @@ export function SpotList({ spots, handlePress }) {
 
   const isFavorite = (id) => {
     if (refId.includes(id)) {
-      console.log(id);
       return true;
     }
     else {
       return false;
     }
   }
+
 
   return (
     // create a list of spots and navigate to SpotDetails
@@ -61,7 +66,7 @@ export function SpotList({ spots, handlePress }) {
         keyExtractor={(item) => item.id}
         numColumns={2}
         renderItem={({ item }) => (
-          
+
 
           <PressableButton
             style={styles.item}
@@ -90,14 +95,13 @@ export function SpotList({ spots, handlePress }) {
                     <Text>{item.city}</Text>
                   </View>
                   <View style={styles.heartContainer}>
-
                     {
-                      isFavorite(item.id) ? (<PressableButton pressHandler={() => { }}>
+                      isFavorite(item.id) ? (<PressableButton pressHandler={() => removeFavoriteFunction(item.id)}>
                         <Entypo name="heart" size={20} color={colors.RED} />
                       </PressableButton>
 
                       ) : (
-                        <PressableButton pressHandler={handlePress}>
+                        <PressableButton pressHandler={() => addFavoriteFunction(item.id)}>
                           <Entypo name="heart-outlined" size={20} color={colors.RED} />
                         </PressableButton>
 
