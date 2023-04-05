@@ -5,6 +5,7 @@ import {
   doc,
   setDoc,
   updateDoc,
+  arrayUnion
 } from "firebase/firestore";
 import { auth, firestore } from "./firebase-setup";
 
@@ -59,6 +60,30 @@ export async function updateReviewFunction(spotId, reviewId, data) {
 export async function addUserInfoFunction(data) {
   try {
     await setDoc(doc(firestore, "user", data.uid), data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+export async function addFavoriteFunction(data) {
+  try {
+    const userRef = doc(firestore, "user", auth.currentUser.uid);
+    await updateDoc(userRef, {
+      favorite: arrayUnion(data)
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+export async function updateFavoriteFunction(favoriteId, newData) {
+  try {
+    const favoriteRef = doc(firestore, "user", auth.currentUser.uid, "favorite", favoriteId);
+    await updateDoc(favoriteRef, {
+      ...newData
+    });
   } catch (err) {
     console.log(err);
   }
