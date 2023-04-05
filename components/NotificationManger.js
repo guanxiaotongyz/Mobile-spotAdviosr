@@ -2,8 +2,7 @@ import { View, Text, Button } from "react-native";
 import React from "react";
 import * as Notifications from "expo-notifications";
 
-const NotificationManger = () => {
-  async function verifyPermissions() {
+export async function verifyPermissions() {
     const result = await Notifications.getPermissionsAsync();
 
     if (result.granted) {
@@ -15,7 +14,7 @@ const NotificationManger = () => {
     return premissionresult.granted;
   }
 
-  async function scheduleNotificationHandler() {
+export async function scheduleNotificationHandler() {
     const premissionresult = await verifyPermissions();
     if (!premissionresult) {
       Alert.alert(
@@ -37,6 +36,8 @@ const NotificationManger = () => {
       },
     });
   }
+
+const NotificationManger = () => {
 
   return (
     <View>
