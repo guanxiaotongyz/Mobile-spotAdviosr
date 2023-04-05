@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { auth } from "../firebase/firebase-setup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addUserInfoFunction } from "../firebase/firestore";
+import { scheduleNotificationUserHandler } from "../components/NotificationManger";
 
 export default function Signup({ navigation }) {
   const [email, setEmail] = useState("");
@@ -37,6 +38,7 @@ export default function Signup({ navigation }) {
         gender: gender,
         age: age,
       });
+      scheduleNotificationUserHandler();
     } catch (err) {
       console.log("sign up error ", err);
       Alert.alert("Error", err.message);
@@ -107,6 +109,7 @@ export default function Signup({ navigation }) {
       />
       <Button title="Register" onPress={signupHandler} />
       <Button title="Already Registered? Login" onPress={loginHandler} />
+      {/* <Button title="Schedule Notification" onPress={scheduleNotificationUserHandler} /> */}
     </View>
   );
 }

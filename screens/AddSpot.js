@@ -4,7 +4,9 @@ import { addSpotFunction } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import { colors } from "../helper/helper";
 import { MyButton } from "../components/MyButton";
-
+import NotificationManger from "../components/NotificationManger";
+import { verifyPermissions } from "../components/NotificationManger";
+import { scheduleNotificationHandler } from "../components/NotificationManger";
 
 const AddSpot = ({ props }) => {
     const [description, setDescription] = React.useState("");
@@ -18,6 +20,7 @@ const AddSpot = ({ props }) => {
         setName("");
         setCity("");
         setDescription("");
+        scheduleNotificationHandler();
         navigation.goBack();
     };
 
@@ -72,6 +75,7 @@ const AddSpot = ({ props }) => {
                 <View style={styles.buttons}>
                     <MyButton text="Reset" onPress={reset} />
                     <MyButton text="Submit" onPress={submitFunction} />
+                    {/* <NotificationManger /> */}
 
                 </View>
 

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Linking } from "react-native";
 import React, { useEffect, useState } from "react";
 // firebase
 import { firestore } from "./firebase/firebase-setup";
@@ -29,6 +29,18 @@ import EditReview from "./screens/EditReview";
 // authentication screens
 import Login from "./authenticationcomponents/Login";
 import Signup from "./authenticationcomponents/Signup";
+// notifications
+import * as Notifications from "expo-notifications";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => {
+    return {
+      shouldShowAlert: true,
+      shouldPlaySound: true,
+      shouldSetBadge: true,
+    };
+  },
+});
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +82,31 @@ const AppStack = (
 );
 
 export default function App() {
+
+  useEffect(() => {
+    const subscription = Notifications.addNotificationReceivedListener(
+      (notification) => {
+        console.log("notification ", notification);
+      }
+    );
+
+    const responseListener =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log("response ", response.notification);
+        try {
+          Linking.openURL(response.notification.request.content.data.url);
+        } catch (err) {
+          console.log("linking error ", err);
+        }
+      });
+
+    return () => {
+      subscription.remove;
+      responseListener.remove;
+    };
+  }, []);
+
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
