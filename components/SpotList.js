@@ -43,11 +43,9 @@ export function SpotList({ spots, handlePress }) {
   }, []);
 
 
-
-
   const isFavorite = (id) => {
-    console.log("==", id, "==");
     if (refId.includes(id)) {
+      console.log(id);
       return true;
     }
     else {

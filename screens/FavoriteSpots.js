@@ -53,9 +53,8 @@ const FavoriteSpots = () => {
 
   return (
     <View>
-      <Text>FavoriteSpots</Text>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <SpotList spots={spots} isFavortite={true} />
+        <SpotList spots={spots}/>
       </View>
     </View>
   );
