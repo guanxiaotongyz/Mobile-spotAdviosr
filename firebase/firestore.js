@@ -5,6 +5,9 @@ import {
   doc,
   setDoc,
   updateDoc,
+  getDoc,
+  arrayUnion,
+  arrayRemove
 } from "firebase/firestore";
 import { auth, firestore } from "./firebase-setup";
 
@@ -59,6 +62,39 @@ export async function updateReviewFunction(spotId, reviewId, data) {
 export async function addUserInfoFunction(data) {
   try {
     await setDoc(doc(firestore, "user", data.uid), data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+export async function addFavoriteFunction(itemId) {
+  try {
+    const userRef = doc(firestore, "user", auth.currentUser.uid);
+    const userSnapshot = await getDoc(userRef);
+    const favorites = userSnapshot.data().favorite || [];
+    const itemRef = doc(firestore, "item", itemId);
+    if (!favorites.some(fav => fav.id === itemId)) {
+      await updateDoc(userRef, {
+        favorite: [...favorites, itemRef],
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+export async function removeFavoriteFunction(itemId) {
+  try {
+    const userRef = doc(firestore, "user", auth.currentUser.uid);
+    const userSnapshot = await getDoc(userRef);
+    const favorites = userSnapshot.data().favorite || [];
+    const itemRef = doc(firestore, "item", itemId);
+    const updatedFavorites = favorites.filter(fav => fav.id !== itemId);
+    await updateDoc(userRef, {
+      favorite: updatedFavorites,
+    });
   } catch (err) {
     console.log(err);
   }
