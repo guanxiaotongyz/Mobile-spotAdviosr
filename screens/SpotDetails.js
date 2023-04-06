@@ -20,11 +20,14 @@ import { Image, StyleSheet } from "react-native";
 import WeatherApi from "../components/WeatherApi";
 import Card from "../components/Card";
 import { colors } from "../helper/helper";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../firebase/firebase-setup";
 
 const SpotDetails = (props) => {
   const spotId = props.route.params.item.id;
   console.log("==spotId== in SpotDetail", spotId);
   const spotItem = props.route.params.item;
+  const [imageURL, setImageURL] = useState("");
   // read this spot data from firestore
 
   // console.log("=====spot======", item);
@@ -45,6 +48,20 @@ const SpotDetails = (props) => {
     setComment();
     setRate();
   };
+
+  useEffect(() => {
+    async function getImageURL() {
+      try {
+        const reference = ref(storage, spotItem.imageUriRef);
+        const url = await getDownloadURL(reference);
+        setImageURL(url);
+      } catch (err) {
+        console.log("download image ", error);
+      }
+    }
+    getImageURL();
+  }, []);
+
 
   // get subcollection review in spots  data from firestore
   useEffect(() => {
@@ -73,7 +90,10 @@ const SpotDetails = (props) => {
 
   return (
     <View>
-      <Image source={require("../assets/nanjing.jpg")} style={styles.image} />
+      {/* <Image source={require("../assets/nanjing.jpg")} style={styles.image} /> */}
+      {imageURL && (
+        <Image source={{ uri: imageURL }} style={{ width: 100, height: 100 }} />
+      )}
       <Text style={styles.name}>Name : {spotItem.name}</Text>
       <Text style={styles.city}>City : {spotItem.city}</Text>
       <Text style={styles.description}>
