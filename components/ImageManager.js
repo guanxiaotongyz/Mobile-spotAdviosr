@@ -6,6 +6,7 @@ export default function ImageManager({ imageUriHandler }) {
   const [imageUri, setImageUri] = useState("");
   const [permissionInfo, requestPermission] =
     ImagePicker.useCameraPermissions();
+  
 
   async function verifyPermission() {
     if (permissionInfo.granted) {

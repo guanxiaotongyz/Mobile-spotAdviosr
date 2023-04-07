@@ -24,11 +24,11 @@ import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase/firebase-setup";
 
 const SpotDetails = (props) => {
+  
   const spotId = props.route.params.item.id;
   console.log("==spotId== in SpotDetail", spotId);
   const spotItem = props.route.params.item;
   const [imageURL, setImageURL] = useState("");
-  // read this spot data from firestore
 
   // console.log("=====spot======", item);
 
@@ -92,7 +92,7 @@ const SpotDetails = (props) => {
     <View>
       {/* <Image source={require("../assets/nanjing.jpg")} style={styles.image} /> */}
       {imageURL && (
-        <Image source={{ uri: imageURL }} style={{ width: 100, height: 100 }} />
+        <Image source={{ uri: imageURL }} style={{ width: '100%', height: 300 }} />
       )}
       <Text style={styles.name}>Name : {spotItem.name}</Text>
       <Text style={styles.city}>City : {spotItem.city}</Text>

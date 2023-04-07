@@ -30,6 +30,7 @@ export function SpotList({ spots, screenName }) {
   const [refId, setRefId] = useState([]);
   const [imageRes, setImageRes] = useState("");
 
+
   useEffect(() => {
     // async function getImageURL() {
     //   console.log('start once');
@@ -51,7 +52,7 @@ export function SpotList({ spots, screenName }) {
         spots.map(async (spot) => {
           const result = await read_image_from_storage(spot.imageUriRef);
           // console.log("spot res 1:" + JSON.stringify(result) + JSON.stringify(spot))
-          return { spot, imageURI: result };
+          return {  ...spot, imageURI: result };
         })
       );
       setImageRes(spotRes);
@@ -135,45 +136,28 @@ export function SpotList({ spots, screenName }) {
     <View style={styles.container}>
       <FlatList
         data={imageRes}
-        keyExtractor={(item) => item.spot.id}
+        keyExtractor={(item) => item.id}
         numColumns={2}
-        /*
-        item: {
-            "spot": {
-                "id": "2e0TmDqygtxxvNwFXS95",
-                "uid": "5Qc5De9pTgdljWOhgBgr3dobDir1",
-                "city": "vancouver",
-                "imageUriRef": "images/B7AFA432-931D-48E6-97BC-8589FE9F9167.jpg",
-                "name": "aa",
-                "description": "aades"
-            },
-            "imageURI": "https://firebasestorage.googleapis.com/v0/b/mobilefinaltest-e311f.appspot.com/o/images%2FB7AFA432-931D-48E6-97BC-8589FE9F9167.jpg?alt=media&token=8f886195-8333-4cfc-83b0-3bf4a06dc55c"
-        }
-        */
         renderItem={({ item }) => (
+
+
           <PressableButton
             style={styles.item}
             pressHandler={() => navigation.navigate("SpotDetails", { item })}
+            android_ripple={{ color: colors.LIGHT_BLUE, foreground: true }}
           >
+
             <View style={styles.itemContainer}>
               <View style={styles.imageContainer}>
-                {/* <ImageBackground
-                  source={require("../assets/LACMA.jpeg")}
+                <ImageBackground
+                  source={{ uri: item.imageURI}}
                   style={styles.backgroundImage}
-                /> */}
-                {(
-                  <Image
-                    source={{ uri: item.imageURI }}
-                    style={{ width: 100, height: 100 }}
-                  />
-                )}
-                {/* <Image source={{ uri: `${getImageRef(item.imageUriRef)}`}} style={styles.backgroundImage} /> */}
+                />
               </View>
 
               <View style={styles.infoContainer}>
                 <View>
-                  <Text style={styles.name}>{item.spot.name}</Text>
-                  {/* <Text style={styles.name}>{item.imageUriRef}</Text> */}
+                  <Text style={styles.name}>{item.name}</Text>
                 </View>
 
                 <View style={styles.bottomContainer}>
@@ -181,32 +165,32 @@ export function SpotList({ spots, screenName }) {
                     <Ionicons
                       name="location-outline"
                       color={colors.BLACK}
-                      size={16}
-                    />
-                    <Text>{item.spot.city}</Text>
+                      size={16} />
+                    <Text>{item.city}</Text>
                   </View>
                   <View style={styles.heartContainer}>
-                    {isFavorite(item.id) ? (
-                      <PressableButton
-                        pressHandler={() => removeFavoriteFunction(item.id)}
-                      >
+                    {
+                      isFavorite(item.id) ? (<PressableButton pressHandler={() => removeFavoriteFunction(item.id)}>
                         <Entypo name="heart" size={20} color={colors.RED} />
                       </PressableButton>
-                    ) : (
-                      <PressableButton
-                        pressHandler={() => addFavoriteFunction(item.id)}
-                      >
-                        <Entypo
-                          name="heart-outlined"
-                          size={20}
-                          color={colors.RED}
-                        />
-                      </PressableButton>
-                    )}
+
+                      ) : (
+                        <PressableButton pressHandler={() => addFavoriteFunction(item.id)}>
+                          <Entypo name="heart-outlined" size={20} color={colors.RED} />
+                        </PressableButton>
+
+                      )
+                    }
                   </View>
+
+
                 </View>
               </View>
             </View>
+
+
+
+
           </PressableButton>
         )}
       />
@@ -214,9 +198,10 @@ export function SpotList({ spots, screenName }) {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    marginTop: 10
   },
   item: {
     flexBasis: "42%",
@@ -232,19 +217,19 @@ const styles = StyleSheet.create({
   cityContainer: {
     flexDirection: "row",
     alignItems: "center",
-    flex: 1,
+    flex: 1
   },
   name: {
     flexWrap: "wrap",
     fontWeight: "bold",
-    marginLeft: "2%",
+    marginLeft: "2%"
   },
   backgroundImage: {
     width: "100%",
-    height: "100%",
+    height: "100%"
   },
   infoContainer: {
-    flexBasis: "50%",
+    flexBasis: "50%"
   },
   itemContainer: {
     flexDirection: "column",
@@ -254,15 +239,16 @@ const styles = StyleSheet.create({
     flexBasis: "50%",
   },
   heartContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 25
   },
   bottomContainer: {
     flexDirection: "row",
     alignItems: "center",
     position: "absolute",
     bottom: "3%",
-    width: "100%",
-  },
+    width: "100%"
+  }
+
 });
