@@ -25,7 +25,7 @@ import { addFavoriteFunction } from "../firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase/firebase-setup";
 
-export function SpotList({ spots, screenName }) {
+export function SpotList({ spots }) {
   const navigation = useNavigation();
   const [refId, setRefId] = useState([]);
   const [imageRes, setImageRes] = useState("");
@@ -52,7 +52,7 @@ export function SpotList({ spots, screenName }) {
         spots.map(async (spot) => {
           const result = await read_image_from_storage(spot.imageUriRef);
           // console.log("spot res 1:" + JSON.stringify(result) + JSON.stringify(spot))
-          return {  ...spot, imageURI: result };
+          return { ...spot, imageURI: result };
         })
       );
       setImageRes(spotRes);
