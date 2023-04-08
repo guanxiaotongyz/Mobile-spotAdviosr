@@ -47,7 +47,6 @@ const AddSpot = ({ props }) => {
         setCity("");
         setDescription("");
         setImageUri("");
-        scheduleNotificationHandler();
         navigation.goBack();
       }
 
