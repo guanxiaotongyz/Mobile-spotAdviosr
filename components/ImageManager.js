@@ -6,6 +6,18 @@ export default function ImageManager({ imageUriHandler }) {
   const [imageUri, setImageUri] = useState("");
   const [permissionInfo, requestPermission] =
     ImagePicker.useCameraPermissions();
+
+    const read_image_from_storage = async (path) => {
+      try {
+        if (path) {
+          const reference = ref(storage, path);
+          const downloadURL = await getDownloadURL(reference);
+          return downloadURL;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
   
 
   async function verifyPermission() {
@@ -27,8 +39,12 @@ export default function ImageManager({ imageUriHandler }) {
       const result = await ImagePicker.launchCameraAsync();
       if (result.assets.length) {
         let uri = result.assets[0].uri;
+        let res = await read_image_from_storage(uri);
         setImageUri(uri);
         imageUriHandler(uri);
+        // setImageUri(uri);
+        // imageUriHandler(uri);
+
       }
     } catch (err) {
       console.log("launch camera error ", err);

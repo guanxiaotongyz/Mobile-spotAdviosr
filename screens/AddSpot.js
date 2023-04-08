@@ -17,12 +17,28 @@ const AddSpot = ({ props }) => {
     const [name, setName] = React.useState("");
     const [city, setCity] = React.useState("");
     const [imageUri, setImageUri] = React.useState("");
+    const [imageDown, setImageDown] = React.useState("");
 
     const imageUriHandler = (uri) => {
         setImageUri(uri);
+        let res = read_image_from_storage(uri);
+        console.log('Add spots imagedown',res);
+        setImageDown(res);
     };
 
     const navigation = useNavigation();
+
+    const read_image_from_storage = async (path) => {
+        try {
+          if (path) {
+            const reference = ref(storage, path);
+            const downloadURL = await getDownloadURL(reference);
+            return downloadURL;
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
 
     async function fetchImageData(uri) {
         console.log(uri); //local uri on the device
@@ -39,30 +55,34 @@ const AddSpot = ({ props }) => {
         if (imageUri) {
             imageUriRef = await fetchImageData(imageUri);
         }
-        addSpotFunction({ description, name, city, imageUriRef });
-        console.log('imageuri',imageUri);
-        console.log('imageuriref',imageUriRef);
+        let imageDown = await read_image_from_storage(imageUriRef);
+        console.log('add spot imageuri',imageUri);
+        console.log('add spot imageuriref',imageUriRef);
+        console.log('add spot imageDown',imageDown);
+        addSpotFunction({ description, name, city, imageUriRef,imageDown });
+        
         setName("");
         setCity("");
         setDescription("");
         setImageUri("");
+        setImageDown("");
         scheduleNotificationHandler();
         navigation.goBack();
       }
-      async function uploadEnter(description, name, city, imageUri) {
-        let imageUriRef;
-        if (imageUri) {
-            imageUriRef = await fetchImageData(imageUri);
-        }
-        addSpotFunction({ description, name, city, imageUriRef });
-        console.log('imageuri',imageUri);
-        console.log('imageuriref',imageUriRef);
-        setName("");
-        setCity("");
-        setDescription("");
-        setImageUri("");
-        navigation.goBack();
-      }
+    //   async function uploadEnter(description, name, city, imageUri) {
+    //     let imageUriRef;
+    //     if (imageUri) {
+    //         imageUriRef = await fetchImageData(imageUri);
+    //     }
+    //     addSpotFunction({ description, name, city, imageUriRef });
+    //     console.log('imageuri',imageUri);
+    //     console.log('imageuriref',imageUriRef);
+    //     setName("");
+    //     setCity("");
+    //     setDescription("");
+    //     setImageUri("");
+    //     navigation.goBack();
+    //   }
 
     const submitFunction = () => {
         addSpotFunction({ description, name, city });

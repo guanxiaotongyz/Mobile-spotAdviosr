@@ -74,7 +74,9 @@ export function SpotList({ spots }) {
       if (path) {
         const reference = ref(storage, path);
         const downloadURL = await getDownloadURL(reference);
+        console.log('the download URL', downloadURL);
         return downloadURL;
+        
       }
     } catch (err) {
       console.log(err);
