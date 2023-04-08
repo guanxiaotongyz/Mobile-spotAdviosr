@@ -50,20 +50,6 @@ const AddSpot = ({ props }) => {
         scheduleNotificationHandler();
         navigation.goBack();
       }
-      async function uploadEnter(description, name, city, imageUri) {
-        let imageUriRef;
-        if (imageUri) {
-            imageUriRef = await fetchImageData(imageUri);
-        }
-        addSpotFunction({ description, name, city, imageUriRef });
-        console.log('imageuri',imageUri);
-        console.log('imageuriref',imageUriRef);
-        setName("");
-        setCity("");
-        setDescription("");
-        setImageUri("");
-        navigation.goBack();
-      }
 
     const submitFunction = () => {
         addSpotFunction({ description, name, city });
