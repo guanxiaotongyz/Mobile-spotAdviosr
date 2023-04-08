@@ -41,7 +41,7 @@ export default function GalleryPicker({ imageUriHandler }) {
 
   return (
     <View>
-      <Button title="Pick a Picture" onPress={imageHandler} />
+      <Button title="Gallery" onPress={imageHandler} />
       {imageUri && (
         <Image
           source={{

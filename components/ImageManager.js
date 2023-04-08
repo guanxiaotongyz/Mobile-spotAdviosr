@@ -53,7 +53,7 @@ export default function ImageManager({ imageUriHandler }) {
 
   return (
     <View>
-      <Button title="Take a Picture" onPress={imageHandler} />
+      <Button title="Camera" onPress={imageHandler} />
       {imageUri && (
         <Image
           source={{
