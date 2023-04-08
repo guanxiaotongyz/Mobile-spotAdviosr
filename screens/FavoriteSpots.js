@@ -13,34 +13,33 @@ const FavoriteSpots = () => {
         collection(firestore, "user"),
         where("uid", "==", auth.currentUser.uid)
       ),
-
-      (querySnapshot) => {
+  
+      async (querySnapshot) => {
         if (querySnapshot.docs[0].data().favorite === undefined) {
           console.log("querySnapshot t is empty");
         } else {
           const favSpots = [];
           const refs = querySnapshot.docs[0].data().favorite;
           console.log("refs", refs);
-          refs.forEach((item) => {
+          const promises = refs.map((item) => {
             const id =
               item._key.path.segments[item._key.path.segments.length - 1];
-            onSnapshot(doc(firestore, "spots", id), (doc) => {
+            return getDoc(doc(firestore, "spots", id)).then((doc) => {
               console.log("Current data: ", doc.data());
               favSpots.push({ id: doc.id, ...doc.data() });
             });
           });
+          await Promise.all(promises);
           setSpots(favSpots);
         }
       },
-
+  
       (error) => {
         console.log("snapshot error ", error);
       }
     );
-
-    return () => {
-      unsubscribe();
-    };
+  
+    return () => unsubscribe();
   }, []);
 
   console.log("=====favspot======");
