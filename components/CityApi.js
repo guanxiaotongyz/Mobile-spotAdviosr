@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import CitySpots from "./CitySpots";
 
 const CityApi = ({location}) => {
   const [cityData, setCityData] = useState("");
@@ -36,6 +37,16 @@ const CityApi = ({location}) => {
         </>
       ) : (
         <Text>Loading...</Text>
+      )}
+
+      {cityData ? (
+        <>
+          <View>
+            <CitySpots city={cityData.city}/>
+          </View>
+        </>
+      ) : (
+        <Text>Loading Spots based on city...</Text>
       )}
     </View>
   );

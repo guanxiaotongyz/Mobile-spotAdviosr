@@ -46,19 +46,19 @@ export function SpotList({ spots }) {
     // }
     // getImageURL();
     // setImageURL(getImageURL());
-    const task = async () => {
-      console.log("spots:" + JSON.stringify(spots));
-      const spotRes = await Promise.all(
-        spots.map(async (spot) => {
-          const result = await read_image_from_storage(spot.imageUriRef);
-          // console.log("spot res 1:" + JSON.stringify(result) + JSON.stringify(spot))
-          return { ...spot, imageURI: result };
-        })
-      );
-      setImageRes(spotRes);
-      console.log("spot res:" + JSON.stringify(spotRes));
-    };
-    task();
+    // const task = async () => {
+    //   console.log("spots:" + JSON.stringify(spots));
+    //   const spotRes = await Promise.all(
+    //     spots.map(async (spot) => {
+    //       const result = await read_image_from_storage(spot.imageUriRef);
+    //       // console.log("spot res 1:" + JSON.stringify(result) + JSON.stringify(spot))
+    //       return { ...spot, imageURI: result };
+    //     })
+    //   );
+    //   setImageRes(spotRes);
+    //   console.log("spot res:" + JSON.stringify(spotRes));
+    // };
+    // task();
     /*
     spots.map(async (spot) => {
           const result = await read_image_from_storage(spot.imageUriRef);
@@ -67,7 +67,7 @@ export function SpotList({ spots }) {
         })
     setImageRes(spotRes);
      */
-  }, [spots]);
+  }, []);
 
   const read_image_from_storage = async (path) => {
     try {
@@ -135,7 +135,7 @@ export function SpotList({ spots }) {
     // create a list of spots and navigate to SpotDetails
     <View style={styles.container}>
       <FlatList
-        data={imageRes}
+        data={spots}
         keyExtractor={(item) => item.id}
         numColumns={2}
         renderItem={({ item }) => (
@@ -150,7 +150,7 @@ export function SpotList({ spots }) {
             <View style={styles.itemContainer}>
               <View style={styles.imageContainer}>
                 <ImageBackground
-                  source={{ uri: item.imageURI}}
+                  source={{ uri: item.imageUriRef[0]}}
                   style={styles.backgroundImage}
                 />
               </View>
