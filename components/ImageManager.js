@@ -38,10 +38,13 @@ export default function ImageManager({ imageUriHandler }) {
     try {
       const result = await ImagePicker.launchCameraAsync();
       if (result.assets.length) {
+        // let uri = result.assets[0].uri;
+        // let res = read_image_from_storage(uri);
+        // setImageUri(res);
+        // imageUriHandler(res);
         let uri = result.assets[0].uri;
-        let res = read_image_from_storage(uri);
-        setImageUri(res);
-        imageUriHandler(res);
+        setImageUri(uri);
+        imageUriHandler(uri);
       }
     } catch (err) {
       console.log("launch camera error ", err);
