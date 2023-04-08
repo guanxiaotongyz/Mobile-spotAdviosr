@@ -10,6 +10,7 @@ import { storage } from "../firebase/firebase-setup";
 import { StatusBar } from "expo-status-bar";
 import { onSnapshot, collection, query, where } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import GalleryPicker from "../components/GalleryPicker";
 
 
 const AddSpot = ({ props }) => {
@@ -123,6 +124,7 @@ const AddSpot = ({ props }) => {
 
                 <View style={styles.buttons}>
                     <ImageManager imageUriHandler={imageUriHandler} />
+                    <GalleryPicker imageUriHandler={imageUriHandler} />
                     <MyButton text="Reset" onPress={reset} />
                     {/* <MyButton text="Submit" onPress={submitFunction} /> */}
                     <MyButton text="Submit" onPress={() => {uploadEnter(description, name, city, imageUri)}}/>
