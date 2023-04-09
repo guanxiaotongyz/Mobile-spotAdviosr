@@ -1,9 +1,8 @@
 import { View } from "react-native";
-import { collection, onSnapshot, query, where, doc } from "firebase/firestore";
+import { collection, onSnapshot, query, where, doc,getDoc } from "firebase/firestore";
 import { firestore, auth } from "../firebase/firebase-setup";
 import React, { useEffect, useState } from "react";
 import { SpotList } from "../components/SpotList";
-
 const FavoriteSpots = () => {
   const [spots, setSpots] = useState([]);
 
