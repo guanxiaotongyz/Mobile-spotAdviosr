@@ -11,12 +11,12 @@ In order to install, clone this repository and run:
 > npm install  
 
 Set up .env file
-> apiKey= "AIzaSyBxZT_sAXN4MCFKm1wr7wcuQNCI52ji4S4"
-> authDomain= "practice-crud-c3bb8.firebaseapp.com"
-> projectId= "practice-crud-c3bb8"
-> storageBucket= "practice-crud-c3bb8.appspot.com"
-> messagingSenderId= "449014434573"
-> appId= "1:449014434573:web:1d318b45795850735b7e44"
+apiKey =  "AIzaSyD9lpNVN22HxNO0xnP33Z8kmKyyqAGuzOg"
+authDomain = "trip-advisor-curd.firebaseapp.com"
+projectId = "trip-advisor-curd"
+storageBucket =  "trip-advisor-curd.appspot.com"
+messagingSenderId = "843970286871"
+appId =  "1:843970286871:web:6d6a6dc2cfa5e3087d1352"
 
 
 This was made with Expo, so you need it to run. To do it, run:
