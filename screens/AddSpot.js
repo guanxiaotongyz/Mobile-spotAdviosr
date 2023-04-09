@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, StyleSheet, ScrollView } from "react-native";
+import { Modal, View, Text, TextInput, Button, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 import { addSpotFunction } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
@@ -18,6 +18,8 @@ const AddSpot = ({ props }) => {
     const [name, setName] = React.useState("");
     const [city, setCity] = React.useState("");
     const [imageUri, setImageUri] = React.useState("");
+    const [modalIsVisible, setModalIsVisible] = React.useState(true);
+
 
     const imageUriHandler = (uri) => {
         setImageUri(uri);
@@ -46,7 +48,10 @@ const AddSpot = ({ props }) => {
         setName("");
         setCity("");
         setDescription("");
-        setImageUri("");
+        // setImageUri("");
+        imageUriHandler(null);
+        setModalIsVisible(false);
+        setModalIsVisible(true);
         navigation.goBack();
       }
 
@@ -66,6 +71,7 @@ const AddSpot = ({ props }) => {
     };
 
     return (
+        <Modal visible={modalIsVisible} >
         <ScrollView
             contentContainerStyle={{ flexGrow: 1 }}
             keyboardShouldPersistTaps="handled">
@@ -123,6 +129,7 @@ const AddSpot = ({ props }) => {
 
 
         </ScrollView>
+    </Modal>
     );
 };
 

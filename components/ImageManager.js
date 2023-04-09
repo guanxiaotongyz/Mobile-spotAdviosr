@@ -1,6 +1,7 @@
 import { View, Image, Button, Alert } from "react-native";
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
+import { MyButton } from "./MyButton";
 
 export default function ImageManager({ imageUriHandler }) {
   const [imageUri, setImageUri] = useState("");
@@ -53,7 +54,7 @@ export default function ImageManager({ imageUriHandler }) {
 
   return (
     <View>
-      <Button title="Camera" onPress={imageHandler} />
+      <MyButton text="Camera" onPress={imageHandler} />
       {imageUri && (
         <Image
           source={{

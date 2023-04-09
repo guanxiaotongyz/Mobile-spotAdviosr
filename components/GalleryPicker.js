@@ -1,6 +1,7 @@
 import { View, Image, Button, Alert } from "react-native";
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
+import { MyButton } from "./MyButton";
 
 export default function GalleryPicker({ imageUriHandler }) {
   const [imageUri, setImageUri] = useState("");
@@ -41,7 +42,7 @@ export default function GalleryPicker({ imageUriHandler }) {
 
   return (
     <View>
-      <Button title="Gallery" onPress={imageHandler} />
+      <MyButton text="Gallery" onPress={imageHandler} />
       {imageUri && (
         <Image
           source={{
