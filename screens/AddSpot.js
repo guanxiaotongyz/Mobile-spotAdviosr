@@ -7,6 +7,7 @@ import { MyButton } from "../components/MyButton";
 import NotificationManger from "../components/NotificationManger";
 import { verifyPermissions } from "../components/NotificationManger";
 import { scheduleNotificationHandler } from "../components/NotificationManger";
+import PressableButton from "../components/PressableButton";
 
 const AddSpot = ({ props }) => {
     const [description, setDescription] = React.useState("");
@@ -73,9 +74,12 @@ const AddSpot = ({ props }) => {
                 />
 
                 <View style={styles.buttons}>
-                    <MyButton text="Reset" onPress={reset} />
-                    <MyButton text="Submit" onPress={submitFunction} />
-                    {/* <NotificationManger /> */}
+                    <PressableButton onPress={reset} style={styles.button}>
+                        <Text>Reset</Text>
+                    </PressableButton>
+                    <PressableButton onPress={submitFunction} style={styles.button}>
+                        <Text>Submit</Text>
+                    </PressableButton>
 
                 </View>
 
@@ -120,5 +124,16 @@ const styles = StyleSheet.create({
     text1: {
         height: 90,
         textAlignVertical: "top",
-    }
+    },
+    button: {
+        padding: 12,
+        height: 55,
+        width: 120,
+        borderRadius: 10,
+        margin: 12,
+        backgroundColor: colors.LIME_GREEN,
+        alignSelf: "flex-start",
+        alignItems: "center",
+        justifyContent: "center"
+      },
 })

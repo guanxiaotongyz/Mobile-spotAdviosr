@@ -26,7 +26,8 @@ export function ReviewList({ review, spotItem }) {
           <Text>Review is empty</Text>
         </View>
       ) : (
-        <FlatList
+        <View>
+          <FlatList
           data={review}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
@@ -45,7 +46,9 @@ export function ReviewList({ review, spotItem }) {
               </View>
             </PressableButton>
           )}
+          nestedScrollEnabled={true}
         />
+        </View>
       )}
     </View>
   );

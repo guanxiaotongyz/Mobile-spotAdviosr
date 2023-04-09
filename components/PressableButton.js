@@ -12,6 +12,7 @@ export default function PressableButton({ style, pressHandler, children }) {
         ];
       }}
       onPress={pressHandler}
+      android_ripple={{ color: colors.LIGHT_BLUE, foreground: true }}
     >
       <View>{children}</View>
     </Pressable>
