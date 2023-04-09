@@ -11,7 +11,7 @@ In order to install, clone this repository and run:
 > npm install  
 
 Set up .env file
-apiKey =  "AIzaSyD9lpNVN22HxNO0xnP33Z8kmKyyqAGuzOg"
+> apiKey =  "AIzaSyD9lpNVN22HxNO0xnP33Z8kmKyyqAGuzOg"
 authDomain = "trip-advisor-curd.firebaseapp.com"
 projectId = "trip-advisor-curd"
 storageBucket =  "trip-advisor-curd.appspot.com"
