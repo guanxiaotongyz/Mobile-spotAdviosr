@@ -78,4 +78,30 @@ In the first iteration, we have done these work below:
 3. implement the firebase function for Delete
 
 
+### Iteration 2
+In the second iteration, we have done these work below:
+- Authentication Build and CRUD operations
+- Build three collections, which is spots, reviews and user
+- schedule and send two meaningful local notifications
+- build an interface to an external Web API (weather API base on city name)
+- complete the "my favorite" feature, which each user can collect their favorite spots
+
+
+### Xiaotong Guan
+1. implement the screens : Addspot, Allspots, EditReview
+2. implement the components : Mybutton, PressableButton
+3. implement the firebase function for Creat and Read
+
+### Yudong Yang
+
+1. implement the screens:FavoriteSpots,Main,NearbySpots
+2. implement the components : ReviewList
+3. implement the firebase function for Update
+
+### Yongxiang Chen
+
+1. implement the screens :SpotDetails,UserProfile
+2. implement the components : Spotlist
+3. implement the firebase function for Delete
+
 
