@@ -51,7 +51,7 @@ This was made with Expo, so you need it to run. To do it, run:
 
 ### 5. Nearby spots page
 - show the users of spots in the same city based on their location after getting the access.
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/tree/dev_iter_update_delete_basic/spotsnearby.jpg"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/spotsnearby.jpg"/>
 
 
 
