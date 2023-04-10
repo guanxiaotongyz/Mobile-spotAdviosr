@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, StyleSheet, ScrollView } from "react-native";
+import { Modal, View, Text, TextInput, Button, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 import { addSpotFunction } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
@@ -8,13 +8,56 @@ import NotificationManger from "../components/NotificationManger";
 import { verifyPermissions } from "../components/NotificationManger";
 import { scheduleNotificationHandler } from "../components/NotificationManger";
 import PressableButton from "../components/PressableButton";
+import ImageManager from "../components/ImageManager";
+import { ref, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../firebase/firebase-setup";
+import { StatusBar } from "expo-status-bar";
+import { onSnapshot, collection, query, where } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import GalleryPicker from "../components/GalleryPicker";
+
 
 const AddSpot = ({ props }) => {
     const [description, setDescription] = React.useState("");
     const [name, setName] = React.useState("");
     const [city, setCity] = React.useState("");
+    const [imageUri, setImageUri] = React.useState("");
+    const [modalIsVisible, setModalIsVisible] = React.useState(true);
+
+
+    const imageUriHandler = (uri) => {
+        setImageUri(uri);
+    };
 
     const navigation = useNavigation();
+
+    async function fetchImageData(uri) {
+        console.log(uri); //local uri on the device
+        const response = await fetch(uri);
+        const imageBlob = await response.blob(); //image data
+        const imageName = uri.substring(uri.lastIndexOf("/") + 1);
+        const imageRef = await ref(storage, `images/${imageName}`);
+        const uploadResult = await uploadBytesResumable(imageRef, imageBlob);
+        return uploadResult.metadata.fullPath; //path to the image on the storage
+      }
+
+    async function uploadEnter(description, name, city, imageUri) {
+        let imageUriRef;
+        if (imageUri) {
+            imageUriRef = await fetchImageData(imageUri);
+        }
+        addSpotFunction({ description, name, city, imageUriRef });
+        console.log('imageuri',imageUri);
+        console.log('imageuriref',imageUriRef);
+        setName("");
+        setCity("");
+        setDescription("");
+        // setImageUri("");
+        imageUriHandler(null);
+        setModalIsVisible(false);
+        setModalIsVisible(true);
+        navigation.goBack();
+      }
 
     const submitFunction = () => {
         addSpotFunction({ description, name, city });
@@ -29,9 +72,11 @@ const AddSpot = ({ props }) => {
         setName("");
         setCity("");
         setDescription("");
+        setImageUri("");
     };
 
     return (
+        <Modal visible={modalIsVisible} >
         <ScrollView
             contentContainerStyle={{ flexGrow: 1 }}
             keyboardShouldPersistTaps="handled">
@@ -74,12 +119,13 @@ const AddSpot = ({ props }) => {
                 />
 
                 <View style={styles.buttons}>
-                    <PressableButton onPress={reset} style={styles.button}>
-                        <Text>Reset</Text>
-                    </PressableButton>
-                    <PressableButton onPress={submitFunction} style={styles.button}>
-                        <Text>Submit</Text>
-                    </PressableButton>
+
+                    <ImageManager imageUriHandler={imageUriHandler} />
+                    <GalleryPicker imageUriHandler={imageUriHandler} />
+                    <MyButton text="Reset" onPress={reset} />
+                    {/* <MyButton text="Submit" onPress={submitFunction} /> */}
+                    <MyButton text="Submit" onPress={() => {uploadEnter(description, name, city, imageUri)}}/>
+                    <NotificationManger />
 
                 </View>
 
@@ -89,6 +135,7 @@ const AddSpot = ({ props }) => {
 
 
         </ScrollView>
+    </Modal>
     );
 };
 
