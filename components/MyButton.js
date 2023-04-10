@@ -19,9 +19,9 @@ export function MyButton({ text, onPress }) {
 }
 const normalBtn = {
     padding: 12,
-    height: 50,
-    minWidth: 100,
-    borderRadius: 7,
+    height: 55,
+    width: 200,
+    borderRadius: 30,
     shadowRadius: 3,
     shadowOpacity: 0.1,
     margin: 12,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     normal: {
         ...normalBtn,
-        backgroundColor: colors.LIME_GREEN,
+        backgroundColor: colors.BLUE,
         text: { fontSize: 20, color: colors.WHITE },
     },
     text: {

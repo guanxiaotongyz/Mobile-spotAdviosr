@@ -59,24 +59,7 @@ const AppStack = (
           options={{ headerShown: false }}
         />
         <Stack.Screen name="SpotDetails" component={SpotDetails} />
-        <Stack.Screen
-          name="UserProfile"
-          component={UserProfile}
-          options={{
-            headerRight: () => {
-              return (
-                <Ionicons
-                  name="exit"
-                  size={24}
-                  color={colors.BLUE}
-                  onPress={() => {
-                    signOut(auth);
-                  }}
-                />
-              );
-            },
-          }}
-        />
+        <Stack.Screen name="UserProfile" component={UserProfile}/>
         <Stack.Screen name="EditReview" component={EditReview} />
   </>
 );

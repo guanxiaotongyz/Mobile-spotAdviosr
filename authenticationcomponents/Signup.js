@@ -1,11 +1,12 @@
-
-
 import { View, Text, TextInput, Button, Alert, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { auth } from "../firebase/firebase-setup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addUserInfoFunction } from "../firebase/firestore";
 import { scheduleNotificationUserHandler } from "../components/NotificationManger";
+import Card from "../components/Card";
+import { MyButton } from "../components/MyButton";
+import { colors } from "../helper/helper";
 
 export default function Signup({ navigation }) {
   const [email, setEmail] = useState("");
@@ -46,7 +47,18 @@ export default function Signup({ navigation }) {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Nick name:</Text>
+      <Card
+        height={650}
+        backgroundColor={colors.WHITE}
+        marginTop={30}
+        width={330}
+      >
+        <View style={styles.textContatiner}>
+          <Text style={styles.label}>Sign up</Text>
+        </View>
+
+        <View style={styles.inputContainer}>
+        <Text style={styles.text}>Nick name</Text>
       <TextInput
         style={styles.input}
         value={name}
@@ -54,9 +66,8 @@ export default function Signup({ navigation }) {
         onChangeText={(newName) => {
           setName(newName);
         }}
-        placeholder="Name"
       />
-      <Text style={styles.label}>Gender:</Text>
+      <Text style={styles.text}>Gender</Text>
       <TextInput
         style={styles.input}
         value={gender}
@@ -64,9 +75,8 @@ export default function Signup({ navigation }) {
         onChangeText={(newGender) => {
           setGender(newGender);
         }}
-        placeholder="Gender"
       />
-      <Text style={styles.label}>Age:</Text>
+      <Text style={styles.text}>Age</Text>
       <TextInput
         style={styles.input}
         value={age}
@@ -74,9 +84,8 @@ export default function Signup({ navigation }) {
         onChangeText={(newAge) => {
           setAge(newAge);
         }}
-        placeholder="Age"
       />
-      <Text style={styles.label}>New Email:</Text>
+      <Text style={styles.text}>Email</Text>
       <TextInput
         style={styles.input}
         value={email}
@@ -84,31 +93,34 @@ export default function Signup({ navigation }) {
         onChangeText={(newEmail) => {
           setEmail(newEmail);
         }}
-        placeholder="New Email"
       />
-      <Text style={styles.label}>New Password:</Text>
+      <Text style={styles.text}>Password</Text>
       <TextInput
         style={styles.input}
         secureTextEntry={true}
         autoCapitalize="none"
-        placeholder="New Password"
         value={password}
         onChangeText={(newPassword) => {
           setPassword(newPassword);
         }}
       />
-      <Text style={styles.label}>Confirm New Password:</Text>
+      <Text style={styles.text}>Confirm Password:</Text>
       <TextInput
         style={styles.input}
         secureTextEntry={true}
-        placeholder="Confirm New Password"
         value={confirmPassword}
         onChangeText={(newPassword) => {
           setConfirmPassword(newPassword);
         }}
       />
-      <Button title="Register" onPress={signupHandler} />
-      <Button title="Already Registered? Login" onPress={loginHandler} />
+
+        </View>
+        <View style={styles.buttonContainer}>
+        <MyButton text="Sign up" onPress={signupHandler} width={50}/>
+      <Button title="Already a user? Login" onPress={loginHandler} />
+        </View>
+
+      </Card>
       {/* <Button title="Schedule Notification" onPress={scheduleNotificationUserHandler} /> */}
     </View>
   );
@@ -118,19 +130,45 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    alignItems: "center"
+  },
+  card: {
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
   },
   input: {
-    borderColor: "#552055",
-    borderWidth: 2,
-    width: 350,
-    marginTop: 10,
-    marginLeft: 10,
+    borderColor: "#171717",
+    borderWidth: 1.17,
+    width: "86%",
+    marginTop: 3,
     padding: 9,
     borderRadius: 5,
+    height: 45
   },
   label: {
-    marginTop: 10,
-    marginLeft: 10,
-    fontSize: 18,
+    fontSize: 30,
+    fontWeight: "bold",
+    marginLeft: "7%",
+    marginTop: "3%"
   },
+  inputContainer: {
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  buttonContainer: {
+    marginTop: 20,
+    alignItems: "center"
+  },
+  newerContainer: {
+    flexDirection: "row"
+  },
+  text: {
+    fontSize: 15,
+    marginLeft: "7%",
+    alignSelf: "flex-start",
+    marginTop: 7,
+    marginBottom: 3
+  }
 });

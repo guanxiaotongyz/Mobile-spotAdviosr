@@ -14,7 +14,7 @@ const colors = {
   RED: "#FF0000",
   BLACK: "black",
   DARK_GREY: "#5A5A5A",
-  BLUE: "#60A3D9",
+  BLUE: "#006DCC",
   REBECAPURPLE : "#663399",
   LIME_GREEN: "#76B947",
   SEAFOAM_GREEN: "#B2D2A4",

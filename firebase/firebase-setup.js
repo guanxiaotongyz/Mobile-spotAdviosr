@@ -9,7 +9,6 @@ import {
   messagingSenderId,
   appId,
 } from "@env";
-// import React from "react";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {initializeAuth,getReactNativePersistence } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";

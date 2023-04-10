@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Button, ScrollView, FlatList } from "react-native";
 import {
   collection,
   doc,
@@ -20,6 +20,8 @@ import { Image, StyleSheet } from "react-native";
 import WeatherApi from "../components/WeatherApi";
 import Card from "../components/Card";
 import { colors } from "../helper/helper";
+import PressableButton from "../components/PressableButton";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const SpotDetails = (props) => {
   const spotId = props.route.params.item.id;
@@ -72,48 +74,53 @@ const SpotDetails = (props) => {
   console.log("=====review in SpotDetail component ======", review);
 
   return (
-    <View>
-      <Image source={require("../assets/nanjing.jpg")} style={styles.image} />
-      <Text style={styles.name}>Name : {spotItem.name}</Text>
-      <Text style={styles.city}>City : {spotItem.city}</Text>
-      <Text style={styles.description}>
-        Description : {spotItem.description}
-      </Text>
+    <SafeAreaView>
+      <ScrollView>
+        <Image source={require("../assets/nanjing.jpg")} style={styles.image} />
+        <Text style={styles.name}>Name : {spotItem.name}</Text>
+        <Text style={styles.city}>City : {spotItem.city}</Text>
+        <Text style={styles.description}>
+          Description : {spotItem.description}
+        </Text>
 
-      <Card
-        heightValue={55}
-        widthValue={300}
-        marginhorizontal={20}
-        margintop={10}
-        backgroundColor={colors.LIGHT_PURPLE}
-      >
-        <WeatherApi city={spotItem.city} />
-      </Card>
+        <Card
+          height={55}
+          width={300}
+          marginHorizontal={10}
+          marginTop={10}
+          backgroundColor={colors.ORANGE}
+        >
+          <WeatherApi city={spotItem.city} />
+        </Card>
 
-      <Text style={styles.reviewText}>Reviews</Text>
+        <Text style={styles.reviewText}>Reviews</Text>
 
-      <TextInput
-        style={styles.addreview}
-        value={comment}
-        placeholder="Add your review"
-        onChangeText={(newText) => {
-          setComment(newText);
-        }}
-      ></TextInput>
-      <TextInput
-        value={rate}
-        style={styles.rate}
-        placeholder="Add your rate from 1 to 5"
-        onChangeText={(newText) => {
-          setRate(newText);
-        }}
-      ></TextInput>
+        <TextInput
+          style={styles.addreview}
+          value={comment}
+          placeholder="Add your review"
+          onChangeText={(newText) => {
+            setComment(newText);
+          }}
+        ></TextInput>
+        <TextInput
+          value={rate}
+          style={styles.rate}
+          placeholder="Add your rate from 1 to 5"
+          onChangeText={(newText) => {
+            setRate(newText);
+          }}
+        ></TextInput>
 
-      <Button title="Add review" onPress={submitReview}></Button>
+        <PressableButton onPress={submitReview} style={styles.addReviewButton}>
+          <Text style={styles.text}>Add review</Text>
+        </PressableButton>
 
-      <Text></Text>
-      <ReviewList review={review} spotItem={spotItem} />
-    </View>
+        <Text></Text>
+        <ReviewList review={review} spotItem={spotItem} />
+      </ScrollView>
+    </SafeAreaView>
+
   );
 };
 
@@ -162,4 +169,19 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     maxWidth: "50%",
   },
+  addReviewButton: {
+    padding: 12,
+    height: 55,
+    width: 120,
+    borderRadius: 10,
+    margin: 12,
+    backgroundColor: colors.LIGHT_BLUE,
+    alignSelf: "flex-start",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: "bold"
+  }
 });
