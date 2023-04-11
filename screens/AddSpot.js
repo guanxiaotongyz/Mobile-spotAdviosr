@@ -1,4 +1,4 @@
-import { Modal, View, Text, TextInput, Button, StyleSheet, ScrollView } from "react-native";
+import { Modal, View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from "react-native";
 import React from "react";
 import { addSpotFunction } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
@@ -39,27 +39,33 @@ const AddSpot = ({ props }) => {
         const imageRef = await ref(storage, `images/${imageName}`);
         const uploadResult = await uploadBytesResumable(imageRef, imageBlob);
         return uploadResult.metadata.fullPath; //path to the image on the storage
-      }
+    }
 
     async function uploadEnter(description, name, city, imageUri) {
+        if (!description || !name || !city) {
+            Alert.alert("Invalid Input", "Please check you input");
+            return;
+        }
         let imageUriRef;
         if (imageUri) {
             imageUriRef = await fetchImageData(imageUri);
         }
         addSpotFunction({ description, name, city, imageUriRef });
-        console.log('imageuri',imageUri);
-        console.log('imageuriref',imageUriRef);
+        console.log('imageuri', imageUri);
+        console.log('imageuriref', imageUriRef);
         setName("");
         setCity("");
         setDescription("");
-        // setImageUri("");
         imageUriHandler(null);
         setModalIsVisible(false);
         setModalIsVisible(true);
         navigation.goBack();
-      }
+    }
 
     const submitFunction = () => {
+        // if (!description || !name || !city) {
+        //     Alert.alert("Invalid Input", "Please check you input");
+        // }
         addSpotFunction({ description, name, city });
         setName("");
         setCity("");
@@ -76,10 +82,6 @@ const AddSpot = ({ props }) => {
     };
 
     return (
-        <Modal visible={modalIsVisible} >
-        <ScrollView
-            contentContainerStyle={{ flexGrow: 1 }}
-            keyboardShouldPersistTaps="handled">
 
             <View style={styles.container}>
                 <View>
@@ -118,24 +120,24 @@ const AddSpot = ({ props }) => {
                     }}
                 />
 
-                <View style={styles.buttons}>
+                <View style={styles.allButtons}>
 
-                    <ImageManager imageUriHandler={imageUriHandler} />
-                    <GalleryPicker imageUriHandler={imageUriHandler} />
+
+                    <View style={styles.buttons}>
+                        <ImageManager imageUriHandler={imageUriHandler} />
+                        <GalleryPicker imageUriHandler={imageUriHandler} />
+                    </View>
+
+                    <View style={styles.buttons}>
                     <MyButton text="Reset" onPress={reset} />
-                    {/* <MyButton text="Submit" onPress={submitFunction} /> */}
                     <MyButton text="Submit" onPress={() => {uploadEnter(description, name, city, imageUri)}}/>
-                    <NotificationManger />
 
+                    </View>
+                    {/* <NotificationManger/> */}
                 </View>
-
             </View>
 
 
-
-
-        </ScrollView>
-    </Modal>
     );
 };
 
@@ -165,8 +167,7 @@ const styles = StyleSheet.create({
     },
     buttons: {
         flexDirection: "row",
-        marginTop: 30,
-        margin: 20
+        marginTop: 20,
     },
     text1: {
         height: 90,
@@ -182,5 +183,8 @@ const styles = StyleSheet.create({
         alignSelf: "flex-start",
         alignItems: "center",
         justifyContent: "center"
-      },
+    },
+    allButtons: {
+        alignItems: "center"
+    }
 })

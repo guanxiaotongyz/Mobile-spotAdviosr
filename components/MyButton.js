@@ -20,7 +20,7 @@ export function MyButton({ text, onPress }) {
 const normalBtn = {
     padding: 12,
     height: 55,
-    width: 200,
+    width: 150,
     borderRadius: 30,
     shadowRadius: 3,
     shadowOpacity: 0.1,

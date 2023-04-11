@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, ScrollView, FlatList } from "react-native";
+import { View, Text, TextInput, Button, ScrollView, FlatList, Alert } from "react-native";
 import {
   collection,
   doc,
@@ -41,6 +41,10 @@ const SpotDetails = (props) => {
 
   // submit review
   const submitReview = () => {
+    if (!comment || !rate) {
+      Alert.alert("Invalid Input", "Please check you input");
+      return;
+    }
     const data = {
       comment: comment,
       rate: rate,
@@ -133,7 +137,7 @@ const SpotDetails = (props) => {
           }}
         ></TextInput>
 
-        <PressableButton onPress={submitReview} style={styles.addReviewButton}>
+        <PressableButton pressHandler={submitReview} style={styles.addReviewButton}>
           <Text style={styles.text}>Add review</Text>
         </PressableButton>
 

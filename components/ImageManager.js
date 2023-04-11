@@ -1,14 +1,15 @@
-import { View, Image, Button, Alert } from "react-native";
+import { View, Image, Button, Alert, StyleSheet, Text } from "react-native";
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { MyButton } from "./MyButton";
+import PressableButton from "./PressableButton";
+import { colors } from "../helper/helper";
 
 export default function ImageManager({ imageUriHandler }) {
   const [imageUri, setImageUri] = useState("");
   const [permissionInfo, requestPermission] =
     ImagePicker.useCameraPermissions();
   
-
   async function verifyPermission() {
     if (permissionInfo.granted) {
       return true;
@@ -17,18 +18,6 @@ export default function ImageManager({ imageUriHandler }) {
     // this will be user's choice:
     return permissionResult.granted;
   }
-
-  const read_image_from_storage = async (path) => {
-    try {
-      if (path) {
-        const reference = ref(storage, path);
-        const downloadURL = await getDownloadURL(reference);
-        return downloadURL;
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const imageHandler = async () => {
     const permissionReceived = await verifyPermission();
@@ -54,7 +43,8 @@ export default function ImageManager({ imageUriHandler }) {
 
   return (
     <View>
-      <MyButton text="Camera" onPress={imageHandler} />
+      <Button title="Camera" onPress={imageHandler} />
+     
       {imageUri && (
         <Image
           source={{
@@ -66,3 +56,19 @@ export default function ImageManager({ imageUriHandler }) {
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  button: {
+    padding: 12,
+    height: 40,
+    width: 100,
+    borderRadius: 10,
+    margin: 12,
+    backgroundColor: colors.BLUE,
+    alignSelf: "flex-start",
+    alignItems: "center",
+    justifyContent: "center"
+}
+
+})

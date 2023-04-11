@@ -1,7 +1,9 @@
-import { View, Image, Button, Alert } from "react-native";
+import { View, Image, Button, Alert, StyleSheet, Text } from "react-native";
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { MyButton } from "./MyButton";
+import { colors } from "../helper/helper";
+import PressableButton from "./PressableButton";
 
 export default function GalleryPicker({ imageUriHandler }) {
   const [imageUri, setImageUri] = useState("");
@@ -42,7 +44,7 @@ export default function GalleryPicker({ imageUriHandler }) {
 
   return (
     <View>
-      <MyButton text="Gallery" onPress={imageHandler} />
+      <Button title="Gallery" onPress={imageHandler} style={styles.button}/>
       {imageUri && (
         <Image
           source={{
@@ -54,3 +56,18 @@ export default function GalleryPicker({ imageUriHandler }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+      padding: 12,
+      height: 40,
+      width: 100,
+      borderRadius: 10,
+      margin: 12,
+      backgroundColor: colors.BLUE,
+      alignSelf: "flex-start",
+      alignItems: "center",
+      justifyContent: "center"
+  }
+
+})
