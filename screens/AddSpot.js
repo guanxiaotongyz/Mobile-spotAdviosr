@@ -133,7 +133,7 @@ const AddSpot = ({ props }) => {
                     <MyButton text="Submit" onPress={() => {uploadEnter(description, name, city, imageUri)}}/>
 
                     </View>
-                    {/* <NotificationManger/> */}
+                    <NotificationManger/>
                 </View>
             </View>
 
