@@ -56,23 +56,24 @@ const AddSpot = ({ props }) => {
         setName("");
         setCity("");
         setDescription("");
+        scheduleNotificationHandler();
         imageUriHandler(null);
         setModalIsVisible(false);
         setModalIsVisible(true);
         navigation.goBack();
     }
 
-    const submitFunction = () => {
-        // if (!description || !name || !city) {
-        //     Alert.alert("Invalid Input", "Please check you input");
-        // }
-        addSpotFunction({ description, name, city });
-        setName("");
-        setCity("");
-        setDescription("");
-        scheduleNotificationHandler();
-        navigation.goBack();
-    };
+    // const submitFunction = () => {
+    //     // if (!description || !name || !city) {
+    //     //     Alert.alert("Invalid Input", "Please check you input");
+    //     // }
+    //     addSpotFunction({ description, name, city });
+    //     setName("");
+    //     setCity("");
+    //     setDescription("");
+    //     scheduleNotificationHandler();
+    //     navigation.goBack();
+    // };
 
     const reset = () => {
         setName("");
@@ -133,7 +134,7 @@ const AddSpot = ({ props }) => {
                     <MyButton text="Submit" onPress={() => {uploadEnter(description, name, city, imageUri)}}/>
 
                     </View>
-                    <NotificationManger/>
+                    {/* <NotificationManger/> */}
                 </View>
             </View>
 
