@@ -26,6 +26,7 @@ import Main from "./screens/Main";
 import SpotDetails from "./screens/SpotDetails";
 import UserProfile from "./screens/UserProfile";
 import EditReview from "./screens/EditReview";
+import Map from "./components/Map";
 // authentication screens
 import Login from "./authenticationcomponents/Login";
 import Signup from "./authenticationcomponents/Signup";
@@ -66,6 +67,7 @@ const AppStack = (
           }}
         />
         <Stack.Screen name="EditReview" component={EditReview} />
+        <Stack.Screen name="Map" component={Map} />
   </>
 );
 

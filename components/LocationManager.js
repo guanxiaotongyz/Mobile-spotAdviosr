@@ -86,6 +86,10 @@ export default function LocationManager() {
           style={{ width: "100%", height: 200 }}
         />
       )}
+      <Button
+        title="Let me choose on the map!"
+        onPress={locationSelectionHandler}
+      />
       {location ? (
         <>
         <CityApi location= {location}/>
