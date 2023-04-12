@@ -24,6 +24,7 @@ import PressableButton from "../components/PressableButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase/firebase-setup";
+import { auth } from "../firebase/firebase-setup";
 
 const SpotDetails = (props) => {
   
@@ -95,12 +96,9 @@ const SpotDetails = (props) => {
   console.log("=====review in SpotDetail component ======", review);
 
   return (
-
-    <SafeAreaView>
-      <ScrollView>
-      {/* <Image source={require("../assets/nanjing.jpg")} style={styles.image} /> */}
+    <View>
       {imageURL && (
-        <Image source={{ uri: imageURL }} style={{ width: '100%', height: 300 }} />
+        <Image source={{ uri: imageURL }} style={{ width: '100%', height: 200 }} />
       )}
       <Text style={styles.name}>Name : {spotItem.name}</Text>
       <Text style={styles.city}>City : {spotItem.city}</Text>
@@ -109,8 +107,8 @@ const SpotDetails = (props) => {
       </Text>
 
         <Card
-          height={55}
-          width={300}
+          height={23}
+          width={350}
           marginHorizontal={10}
           marginTop={10}
           backgroundColor={colors.ORANGE}
@@ -128,6 +126,8 @@ const SpotDetails = (props) => {
             setComment(newText);
           }}
         ></TextInput>
+        
+        <View style={styles.addbutton}>
         <TextInput
           value={rate}
           style={styles.rate}
@@ -140,11 +140,11 @@ const SpotDetails = (props) => {
         <PressableButton pressHandler={submitReview} style={styles.addReviewButton}>
           <Text style={styles.text}>Add review</Text>
         </PressableButton>
+        </View>
 
-        <Text></Text>
         <ReviewList review={review} spotItem={spotItem} />
-      </ScrollView>
-    </SafeAreaView>
+    
+    </View>
 
   );
 };
@@ -172,33 +172,33 @@ const styles = StyleSheet.create({
   },
   reviewText: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 15,
     marginBottom: 5,
+    marginTop: 5,
     marginLeft: 10,
   },
   addreview: {
-    height: 40,
+    height: 30,
     borderColor: "gray",
     borderWidth: 1,
-    margin: 10,
-    padding: 10,
-    paddingLeft: 10,
+    marginTop: 10,
+    marginLeft: 10,
     maxWidth: "80%",
+    borderRadius: 5,
+
   },
   rate: {
-    height: 40,
+    height: 30,
     borderColor: "gray",
     borderWidth: 1,
     margin: 10,
-    padding: 10,
-    paddingLeft: 10,
     maxWidth: "50%",
+    borderRadius: 5,
   },
   addReviewButton: {
-    padding: 12,
-    height: 55,
-    width: 120,
-    borderRadius: 10,
+    height: 30,
+    width: 60,
+    borderRadius: 5,
     margin: 12,
     backgroundColor: colors.LIGHT_BLUE,
     alignSelf: "flex-start",
@@ -206,7 +206,11 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   text: {
-    fontSize: 16,
+    fontSize: 10,
     fontWeight: "bold"
-  }
+  },
+  addbutton: {
+    flexDirection: "row",
+    justifyContent: "space-left",
+  },
 });

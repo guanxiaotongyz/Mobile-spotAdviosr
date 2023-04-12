@@ -28,13 +28,15 @@ const WeatherApi = ({ city }) => {
     <View>
       {weatherData ? (
         <>
-          <Text style={styles.name}>Weather Information : </Text>
+          <View style = {styles.container}>
           <Text style={styles.temperature}>
-            Current temperature: {Math.round(weatherData.main.temp)}°C
+            Temperature: {Math.round(weatherData.main.temp)}°C
           </Text>
+          <Text>  </Text>
           <Text style={styles.temperature}>
             Current weather: {weatherData.weather[0].description}
           </Text>
+          </View>
         </>
       ) : (
         <Text>Loading...</Text>
@@ -44,15 +46,18 @@ const WeatherApi = ({ city }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center", 
+  },
   name: {
     fontSize: 15,
-    marginLeft: 5,
     fontWeight: "bold",
   },
   temperature: {
     fontSize: 12,
     fontWeight: "bold",
-    marginLeft: 5,
   },
 });
 

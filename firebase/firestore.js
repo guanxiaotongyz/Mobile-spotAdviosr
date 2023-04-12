@@ -11,6 +11,8 @@ import {
 } from "firebase/firestore";
 import { auth, firestore } from "./firebase-setup";
 
+
+
 // add spot
 export async function addSpotFunction(data) {
   try {
