@@ -60,7 +60,8 @@ const AddSpot = ({ props }) => {
         imageUriHandler(null);
         setModalIsVisible(false);
         setModalIsVisible(true);
-        navigation.goBack();
+        //navigation.goBack();
+        navigation.navigate("Home");
     }
 
     // const submitFunction = () => {
