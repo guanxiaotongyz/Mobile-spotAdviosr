@@ -1,16 +1,20 @@
-import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Pressable,
+  Alert,
+} from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { colors, pressedStyle } from "../helper/helper";
 import PressableButton from "./PressableButton";
 import { AntDesign } from "@expo/vector-icons";
 import { auth } from "../firebase/firebase-setup";
-import { doc, getDoc } from "firebase/firestore";
-import { firestore } from "../firebase/firebase-setup";
 
 export function ReviewList({ review, spotItem }) {
   const navigation = useNavigation();
-  const [userInfo, setUserInfo] = React.useState();
 
   // check review is empty
   const isReviewEmpty = (review) => {
@@ -19,23 +23,6 @@ export function ReviewList({ review, spotItem }) {
     }
     return false;
   };
-
-  // get user name from user collection
-  async function getUserInfoFunction(uid) {
-    try {
-      const docRef = doc(firestore, "user", uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data().name);
-        setUserInfo(docSnap.data().name);
-        return docSnap.data();
-      } else {
-        console.log("No such document!");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   // console.log("=====auth======", auth.currentUser.uid);
   return (
@@ -51,23 +38,59 @@ export function ReviewList({ review, spotItem }) {
             data={review}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) =>
-              getUserInfoFunction(item.uid) &&
-             (
-              <PressableButton
-                style={styles.item}
-                pressHandler={() =>
-                  navigation.navigate("EditReview", { item, spotItem })
+              // if uid is equal to auth.currentUser.uid, then navigate to EditReview
+              // else navigate to SpotDetails
+              {
+                if (item.uid === auth.currentUser.uid) {
+                  return (
+                    <PressableButton
+                      style={styles.item}
+                      pressHandler={() =>
+                        navigation.navigate("EditReview", { item, spotItem })
+                      }
+                    >
+                      {/* {console.log("==item==", item)} */}
+                      <Text style={styles.text}>Comment: {item.comment}</Text>
+                      <View style={styles.rateContainer}>
+                        <Text style={styles.text}>Rate: {item.rate}</Text>
+                        <AntDesign
+                          name="star"
+                          color={colors.STARYELLOW}
+                          size={16}
+                        />
+                        <Text style={styles.name}>
+                          {" "}
+                          - By: {item.reviewname}
+                        </Text>
+                      </View>
+                    </PressableButton>
+                  );
+                } else {
+                  return (
+                    <PressableButton
+                      style={styles.item}
+                      pressHandler={() =>
+                        Alert.alert("You can't edit other review")
+                      }
+                    >
+                      <Text style={styles.text}>Comment: {item.comment}</Text>
+                      <View style={styles.rateContainer}>
+                        <Text style={styles.text}>Rate: {item.rate}</Text>
+                        <AntDesign
+                          name="star"
+                          color={colors.STARYELLOW}
+                          size={16}
+                        />
+                        <Text style={styles.name}>
+                          {" "}
+                          - By: {item.reviewname}
+                        </Text>
+                      </View>
+                    </PressableButton>
+                  );
                 }
-              >
-                {/* {console.log("==item==", item)} */}
-                <Text style={styles.text}>Comment: {item.comment}</Text>
-                <View style={styles.rateContainer}>
-                  <Text style={styles.text}>Rate: {item.rate}</Text>
-                  <AntDesign name="star" color={colors.STARYELLOW} size={16} />
-                </View>
-                <Text style={styles.text}>User: {userInfo}</Text>
-              </PressableButton>
-            )}
+              }
+            }
             nestedScrollEnabled={true}
           />
         </View>
@@ -98,5 +121,9 @@ const styles = StyleSheet.create({
   rateContainer: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  name: {
+    marginLeft: "40%",
+    fontWeight: "bold",
   },
 });

@@ -12,6 +12,18 @@ import {
 import { auth, firestore } from "./firebase-setup";
 
 
+ // get user name from user collection
+ async function getUserInfoFunction(uid) {
+  // console.log("========uid==========", uid);
+  const docRef = doc(firestore, "user", uid);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data().name);
+    return docSnap.data().name;
+  } else {
+    console.log("No such document!");
+  }
+}
 
 // add spot
 export async function addSpotFunction(data) {
@@ -27,10 +39,14 @@ export async function addSpotFunction(data) {
 
 // add review
 export async function addReviewFunction(data, spotId) {
+  const reviewName = await getUserInfoFunction(auth.currentUser.uid);
+  // console.log("reviewName", reviewName);
   try {
     await addDoc(collection(firestore, "spots", spotId, "reviews"), {
       ...data,
       uid: auth.currentUser.uid,
+      reviewname: getUserInfoFunction(auth.currentUser.uid),
+      reviewname: reviewName,
     });
   } catch (err) {
     console.log(err);
