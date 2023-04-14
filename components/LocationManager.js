@@ -1,7 +1,7 @@
 import { View, Button, Alert, Image, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
-// import { MAPS_API_KEY } from "@env";
+import { MAPS_API_KEY } from "@env";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import CityApi from "./CityApi";
 
@@ -17,7 +17,7 @@ export default function LocationManager() {
       try {
         setLocation(data.location);
       } catch (err) {
-        console.log("fetch lcoation ", err);
+        console.log("fetch location ", err);
       }
     }
     fetchLocation();
@@ -72,6 +72,7 @@ export default function LocationManager() {
   //   const API_KEY = "AIzaSyChyBLJaRldLX6x4TMcLKn2Cmouswp8k0c";
   const MAPS_API_KEY = "AIzaSyAUqj-MaSuFP8gaFozOAQB5Ri_Zogz9YnA";
   //const API_URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${MAPS_API_KEY}`;
+  // Mapkey = MAPS_API_KEY;
   
   
 
@@ -94,7 +95,7 @@ export default function LocationManager() {
         <>
         <CityApi location= {location}/>
         </>
-      ):<Text>loading city...</Text>}
+      ):<Text>There is no spot in your city</Text>}
     </View>
   );
 }
