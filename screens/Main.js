@@ -75,19 +75,6 @@ const Main = () => {
         name="UserProfile"
         component={UserProfile}
         options={{
-          headerRight: () => {
-            return (
-              <Ionicons
-                name="exit"
-                size={24}
-                color={colors.BLUE}
-                onPress={() => {
-                  signOut(auth);
-                }}
-              />
-            );
-          },
-
           headerTitle: "Profile",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons

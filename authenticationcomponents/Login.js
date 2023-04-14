@@ -16,8 +16,7 @@ export default function Login({ navigation }) {
       console.log("userCred.user.uid", userCred.user.uid);
       console.log("userCred.user.email", userCred.user.email);
     } catch (err) {
-      console.log("login error", err);
-      Alert.alert("Error", err.message);
+      Alert.alert("Error", "Please input valid email and password");
     }
   };
   const signupHandlder = () => {

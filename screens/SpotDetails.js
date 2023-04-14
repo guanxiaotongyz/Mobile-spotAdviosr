@@ -63,7 +63,7 @@ const SpotDetails = (props) => {
         const url = await getDownloadURL(reference);
         setImageURL(url);
       } catch (err) {
-        console.log("download image ", error);
+        console.log("download image ", err);
       }
     }
     getImageURL();
@@ -98,7 +98,7 @@ const SpotDetails = (props) => {
   return (
     <View>
       {imageURL && (
-        <Image source={{ uri: imageURL }} style={{ width: '100%', height: 200 }} />
+        <Image source={{ uri: imageURL }} style={{ width: '100%', height: 300 }} />
       )}
       <Text style={styles.name}>Name : {spotItem.name}</Text>
       <Text style={styles.city}>City : {spotItem.city}</Text>
@@ -111,7 +111,7 @@ const SpotDetails = (props) => {
           width={350}
           marginHorizontal={10}
           marginTop={10}
-          backgroundColor={colors.ORANGE}
+          backgroundColor={colors.LIGHT_BLUE}
         >
           <WeatherApi city={spotItem.city} />
         </Card>
@@ -185,22 +185,23 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     maxWidth: "80%",
     borderRadius: 5,
-
+    padding: 5
   },
   rate: {
     height: 30,
     borderColor: "gray",
     borderWidth: 1,
     margin: 10,
-    maxWidth: "50%",
+    width: "50%",
     borderRadius: 5,
+    padding: 5
   },
   addReviewButton: {
     height: 30,
-    width: 60,
+    width: 80,
     borderRadius: 5,
     margin: 12,
-    backgroundColor: colors.LIGHT_BLUE,
+    backgroundColor: colors.LIME_GREEN,
     alignSelf: "flex-start",
     alignItems: "center",
     justifyContent: "center"

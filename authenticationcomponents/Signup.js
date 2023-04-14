@@ -42,7 +42,7 @@ export default function Signup({ navigation }) {
       scheduleNotificationUserHandler();
     } catch (err) {
       console.log("sign up error ", err);
-      Alert.alert("Error", err.message);
+      Alert.alert("Error", "Please input correct information");
     }
   };
   return (
