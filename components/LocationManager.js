@@ -82,20 +82,21 @@ export default function LocationManager() {
           source={{
             uri: `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:L%7C${location.latitude},${location.longitude}&key=${MAPS_API_KEY}`,
           }}
-          style={{ width: "100%", height: 220 }}
+          style={{ width: "100%", height: 200 }}
+          resizeMode="contain"
         />
       )}
-      {location ? (
-        <>
-          <CityApi location={location} />
-        </>
-      ) : <View></View>}
       <PressableButton pressHandler={locateUserHandler} style={styles.button1}>
         <Text>Locate me</Text>
       </PressableButton>
       <PressableButton pressHandler={locationSelectionHandler} style={styles.button2}>
         <Text>Let me choose on the map</Text>
       </PressableButton>
+      {location ? (
+        <>
+          <CityApi location={location} />
+        </>
+      ) : <View></View>}
     </View>
   );
 }
@@ -103,7 +104,7 @@ export default function LocationManager() {
 
 const styles = StyleSheet.create({
   button1: {
-    height: 55,
+    height: 50,
     width: 120,
     borderRadius: 10,
     margin: 12,
@@ -113,10 +114,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   button2: {
-    height: 60,
+    height: 55,
     width: 200,
     borderRadius: 10,
-    margin: 12,
+    margin: 5,
     backgroundColor: colors.SEAFOAMGREEN,
     alignSelf: "center",
     alignItems: "center",

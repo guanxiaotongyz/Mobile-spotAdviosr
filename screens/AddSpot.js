@@ -112,6 +112,7 @@ const AddSpot = ({ props }) => {
                             uri: imageUri,
                         }}
                         style={{ height: 100, width: 100, marginTop: 20 }}
+                        
                     />
                 )}
             </View>
@@ -135,7 +136,6 @@ const AddSpot = ({ props }) => {
                         <Text style={{fontWeight: "bold"}}>Submit</Text>
                     </PressableButton>
                 </View>
-                {/* <NotificationManger/> */}
             </View>
         </View>
     );
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     },
     buttons: {
         flexDirection: "row",
-        marginTop: 20,
+        marginTop: 10,
         alignItems: "center",
     },
     text1: {

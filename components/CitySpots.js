@@ -44,7 +44,6 @@ const CitySpots = ({city}) => {
         <SpotList spots={spots} />
         </>
       ):<Text>No matched city</Text>}
-      
     </View>
   );
 };
