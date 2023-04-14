@@ -45,14 +45,14 @@ export default function GalleryPicker({ imageUriHandler }) {
   return (
     <View>
       <Button title="Gallery" onPress={imageHandler} style={styles.button}/>
-      {imageUri && (
+      {/* {imageUri && (
         <Image
           source={{
             uri: imageUri,
           }}
           style={{ height: 100, width: 100 }}
         />
-      )}
+      )} */}
     </View>
   );
 }
