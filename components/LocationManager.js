@@ -1,10 +1,11 @@
-import { View, Button, Alert, Image, Text } from "react-native";
+import { View, Button, Alert, Image, Text, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
 // import { MAPS_API_KEY } from "@env";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import CityApi from "./CityApi";
-
+import PressableButton from "./PressableButton";
+import { colors } from "../helper/helper";
 
 
 export default function LocationManager() {
@@ -47,13 +48,12 @@ export default function LocationManager() {
       return;
     }
     try {
+      Alert.alert("Please wait for loading map");
       const result = await Location.getCurrentPositionAsync();
       setLocation({
         latitude: result.coords.latitude,
         longitude: result.coords.longitude,
       });
-      console.log('in location manager',location);
-      console.log('in manager location.latitude',location.latitude);
     } catch (err) {
       console.log("location handler ", err);
     }
@@ -72,29 +72,54 @@ export default function LocationManager() {
   //   const API_KEY = "AIzaSyChyBLJaRldLX6x4TMcLKn2Cmouswp8k0c";
   const MAPS_API_KEY = "AIzaSyAUqj-MaSuFP8gaFozOAQB5Ri_Zogz9YnA";
   //const API_URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${MAPS_API_KEY}`;
-  
-  
+
+
 
   return (
-    <View>
-      <Button title="Locate Me!" onPress={locateUserHandler} />
+    <View style={{ marginTop: 10 }}>
       {location && (
         <Image
           source={{
             uri: `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:L%7C${location.latitude},${location.longitude}&key=${MAPS_API_KEY}`,
           }}
-          style={{ width: "100%", height: 200 }}
+          style={{ width: "100%", height: 220 }}
         />
       )}
-      <Button
-        title="Let me choose on the map!"
-        onPress={locationSelectionHandler}
-      />
       {location ? (
         <>
-        <CityApi location= {location}/>
+          <CityApi location={location} />
         </>
-      ):<Text>loading city...</Text>}
+      ) : <View></View>}
+      <PressableButton pressHandler={locateUserHandler} style={styles.button1}>
+        <Text>Locate me</Text>
+      </PressableButton>
+      <PressableButton pressHandler={locationSelectionHandler} style={styles.button2}>
+        <Text>Let me choose on the map</Text>
+      </PressableButton>
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  button1: {
+    height: 55,
+    width: 120,
+    borderRadius: 10,
+    margin: 12,
+    backgroundColor: colors.SEAFOAMGREEN,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button2: {
+    height: 60,
+    width: 200,
+    borderRadius: 10,
+    margin: 12,
+    backgroundColor: colors.SEAFOAMGREEN,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

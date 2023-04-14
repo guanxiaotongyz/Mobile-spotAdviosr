@@ -39,10 +39,10 @@ export default function UserProfile() {
     <View>
       <Card>
         <View style={styles.textContainer}>
-          <Text style={styles.Text}>Email: {userInfo.email}</Text>
-          <Text style={styles.Text}>Name: {userInfo.name}</Text>
-          <Text style={styles.Text}>Gender: {userInfo.gender}</Text>
-          <Text style={styles.Text}>Age: {userInfo.age}</Text>
+          <Text style={styles.text}>Email: {userInfo.email}</Text>
+          <Text style={styles.text}>Name: {userInfo.name}</Text>
+          <Text style={styles.text}>Gender: {userInfo.gender}</Text>
+          <Text style={styles.text}>Age: {userInfo.age}</Text>
         </View>
       </Card>
       <View style={styles.buttonContainer}>
@@ -63,7 +63,7 @@ export default function UserProfile() {
 }
 
 const styles = StyleSheet.create({
-  Text: {
+  text: {
     fontSize: 15,
     fontWeight: "bold",
     color: colors.BLACK,

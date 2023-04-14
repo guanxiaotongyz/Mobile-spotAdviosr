@@ -36,16 +36,18 @@ export default function Map({ navigation, route }) {
           />
         )}
       </MapView>
+      <View style={{marginBottom: 25}}>
+        <Button
+          disabled={!selectedLocation}
+          title="confirm selected location"
+          onPress={() =>
+            navigation.navigate("Nearby", {
+              selectedLocation: selectedLocation,
+            })
+          }
+        />
+      </View>
 
-      <Button
-        disabled={!selectedLocation}
-        title="confirm selected location"
-        onPress={() =>
-          navigation.navigate("Nearby", {
-            selectedLocation: selectedLocation,
-          })
-        }
-      />
     </>
   );
 }

@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginLeft: 5,
     fontWeight: "bold",
+    marginTop: 10
   },
   temperature: {
     fontSize: 12,
