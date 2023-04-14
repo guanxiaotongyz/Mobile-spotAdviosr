@@ -6,9 +6,9 @@ import {colors} from '../helper/helper';
 const Card = (props) => {
    
    const style ={
-      marginTop: props.marginTop || 20,
+      marginTop: props.marginTop || 80,
       marginHorizontal: props.marginHorizontal ||  70,
-      height: props.height || 300,
+      height: props.height || 250,
       width: props.width || 250,
       borderRadius: 10,
       backgroundColor: props.backgroundColor || colors.LIGHTGREY,

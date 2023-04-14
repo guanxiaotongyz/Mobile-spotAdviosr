@@ -1,10 +1,12 @@
-import { View, Text, Alert , StyleSheet} from "react-native";
+import { View, Text, Alert, StyleSheet, Button, Image, Dimensions, ImageBackground } from "react-native";
 import React from "react";
 import { auth, firestore } from "../firebase/firebase-setup";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import { colors } from "../helper/helper";
+import { signOut, getAuth, reauthenticateWithCredential, deleteUser, EmailAuthProvider } from "firebase/auth";
+
 
 export default function UserProfile() {
   const [userInfo, setUserInfo] = useState([]);
@@ -36,11 +38,26 @@ export default function UserProfile() {
   return (
     <View>
       <Card>
-        <Text style = {styles.Text}>Email: {userInfo.email}</Text>
-        <Text style = {styles.Text}>Name: {userInfo.name}</Text>
-        <Text style = {styles.Text}>Gender: {userInfo.gender}</Text>
-        <Text style = {styles.Text}>Age: {userInfo.age}</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.Text}>Email: {userInfo.email}</Text>
+          <Text style={styles.Text}>Name: {userInfo.name}</Text>
+          <Text style={styles.Text}>Gender: {userInfo.gender}</Text>
+          <Text style={styles.Text}>Age: {userInfo.age}</Text>
+        </View>
       </Card>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Sign out"
+          onPress={() => {
+            signOut(auth);
+          }} />
+      </View>
+      <View>
+        <ImageBackground
+          source={require("../assets/logo.png")}
+          style={styles.image}
+          resizeMode="contain" />
+      </View>
     </View>
   );
 }
@@ -53,4 +70,16 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 20
   },
+  buttonContainer: {
+    marginTop: 20,
+    alignSelf: "center"
+  },
+  textContainer: {
+    margin: 5,
+  },
+  image: {
+    width: 200,
+    height: 100,
+    alignSelf: "center",
+  }
 });
