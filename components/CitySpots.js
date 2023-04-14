@@ -17,6 +17,7 @@ const CitySpots = ({city}) => {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       if (querySnapshot.empty) {
         console.log("No matching documents.");
+        setSpots(null);
         return;
       }
       console.log('City matched: ' + querySnapshot);
@@ -33,7 +34,7 @@ const CitySpots = ({city}) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [city]);
 
   console.log("=====Cityspot finish======");
 
