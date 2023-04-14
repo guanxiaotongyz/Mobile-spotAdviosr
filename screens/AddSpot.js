@@ -4,16 +4,10 @@ import { addSpotFunction } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import { colors } from "../helper/helper";
 import { MyButton } from "../components/MyButton";
-import NotificationManger from "../components/NotificationManger";
-import { verifyPermissions } from "../components/NotificationManger";
 import { scheduleNotificationHandler } from "../components/NotificationManger";
-import PressableButton from "../components/PressableButton";
 import ImageManager from "../components/ImageManager";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase/firebase-setup";
-import { StatusBar } from "expo-status-bar";
-import { onSnapshot, collection, query, where } from "firebase/firestore";
-import { useState, useEffect } from "react";
 import GalleryPicker from "../components/GalleryPicker";
 
 
