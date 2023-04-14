@@ -30,8 +30,7 @@ const CityApi = ({location}) => {
     <View>
       {cityData ? (
         <>
-          <Text style={styles.name}>City Information : {cityData.countryName} </Text>
-          <Text style={styles.temperature}>
+          <Text style={styles.name}>
             Current City: {cityData.city}
           </Text>
         </>
