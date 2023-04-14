@@ -32,26 +32,11 @@ export function SpotList({ spots }) {
 
 
   useEffect(() => {
-    // async function getImageURL() {
-    //   console.log('start once');
-    //   try {
-    //     // const reference = ref(storage, spotItem.imageUriRef);
-    //     const reference = ref(storage, item.imageUriRef);
-    //     const url = await getDownloadURL(reference);
-    //     // setImageURL(url);
-    //     return url;
-    //   } catch (err) {
-    //     console.log("download image ", error);
-    //   }
-    // }
-    // getImageURL();
-    // setImageURL(getImageURL());
     const task = async () => {
       console.log("spots:" + JSON.stringify(spots));
       const spotRes = await Promise.all(
         spots.map(async (spot) => {
           const result = await read_image_from_storage(spot.imageUriRef);
-          // console.log("spot res 1:" + JSON.stringify(result) + JSON.stringify(spot))
           return { ...spot, imageURI: result };
         })
       );
@@ -59,14 +44,6 @@ export function SpotList({ spots }) {
       console.log("spot res:" + JSON.stringify(spotRes));
     };
     task();
-    /*
-    spots.map(async (spot) => {
-          const result = await read_image_from_storage(spot.imageUriRef);
-          // console.log("spot res 1:" + JSON.stringify(result) + JSON.stringify(spot))
-          return { spot, imageURI: result };
-        })
-    setImageRes(spotRes);
-     */
   }, [spots]);
 
   const read_image_from_storage = async (path) => {
@@ -85,7 +62,6 @@ export function SpotList({ spots }) {
     const reference = ref(storage, item.imageUriRef);
     const url = await getDownloadURL(reference);
     return url;
-    //getDownloadURL(ref(storage, item.imageUriRef));
   }
 
   useEffect(() => {
@@ -151,7 +127,6 @@ export function SpotList({ spots }) {
               <View style={styles.imageContainer}>
                 <ImageBackground
                   source={{uri:item.imageURI}}
-                  // source={{ uri: item.imageUriRef[0]}}
                   style={styles.backgroundImage}
                 />
               </View>
@@ -223,21 +198,22 @@ const styles = StyleSheet.create({
   name: {
     flexWrap: "wrap",
     fontWeight: "bold",
-    marginLeft: "2%"
+    marginLeft: "2%",
+    marginTop: 5
   },
   backgroundImage: {
     width: "100%",
     height: "100%"
   },
   infoContainer: {
-    flexBasis: "50%"
+    flexBasis: "45%"
   },
   itemContainer: {
     flexDirection: "column",
     flexBasis: "100%",
   },
   imageContainer: {
-    flexBasis: "50%",
+    flexBasis: "55%",
   },
   heartContainer: {
     alignItems: 'center',

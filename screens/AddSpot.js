@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
     buttons: {
         flexDirection: "row",
         marginTop: 20,
+        alignItems: "center"
     },
     text1: {
         height: 90,
