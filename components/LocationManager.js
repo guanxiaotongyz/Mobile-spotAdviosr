@@ -6,12 +6,14 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import CityApi from "./CityApi";
 import PressableButton from "./PressableButton";
 import { colors } from "../helper/helper";
+import {mapkey} from "@env";
 
 
 export default function LocationManager() {
   const navigation = useNavigation();
   const route = useRoute();
   console.log(route.params);
+  const key = mapkey;
 
   useEffect(() => {
     async function fetchLocation() {
@@ -69,29 +71,28 @@ export default function LocationManager() {
     }
   }
 
-  //   const API_KEY = "AIzaSyChyBLJaRldLX6x4TMcLKn2Cmouswp8k0c";
-  const MAPS_API_KEY = "AIzaSyAUqj-MaSuFP8gaFozOAQB5Ri_Zogz9YnA";
-  //const API_URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${MAPS_API_KEY}`;
-
-
 
   return (
     <View style={{ marginTop: 10 }}>
       {location && (
         <Image
           source={{
-            uri: `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:L%7C${location.latitude},${location.longitude}&key=${MAPS_API_KEY}`,
+            uri: `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:L%7C${location.latitude},${location.longitude}&key=${key}`,
           }}
           style={{ width: "100%", height: 200 }}
           resizeMode="contain"
         />
       )}
-      <PressableButton pressHandler={locateUserHandler} style={styles.button1}>
-        <Text>Locate me</Text>
-      </PressableButton>
-      <PressableButton pressHandler={locationSelectionHandler} style={styles.button2}>
-        <Text>Let me choose on the map</Text>
-      </PressableButton>
+      <View>
+        <PressableButton pressHandler={locateUserHandler} style={styles.button1}>
+          <Text>Locate me</Text>
+        </PressableButton>
+        <PressableButton pressHandler={locationSelectionHandler} style={styles.button2}>
+          <Text>Choose on the map</Text>
+        </PressableButton>
+      </View>
+      <Text>============================================</Text>
+
       {location ? (
         <>
           <CityApi location={location} />
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
   },
   button2: {
     height: 55,
-    width: 200,
+    width: 160,
     borderRadius: 10,
     margin: 5,
     backgroundColor: colors.SEAFOAMGREEN,
