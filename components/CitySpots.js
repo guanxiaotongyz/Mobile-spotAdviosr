@@ -48,11 +48,17 @@ const CitySpots = ({ city }) => {
           <SpotList spots={spots} />
         </>
       ) :
-        <View>
-          <Text style={styles.text}>No matched spots</Text>
-          <Button title="Add one" onPress={() => {
-            navigation.navigate("AddSpot");
-          }}/>
+        <View style={styles.infoContainer}>
+          <View>
+            <Text style={styles.text}>No spot?</Text>
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button title="Add first" onPress={() => {
+              navigation.navigate("AddSpot");
+            }}
+              style={{ justifyContent: "center" }} />
+          </View>
+
         </View>
       }
     </View>
@@ -65,12 +71,20 @@ export default CitySpots;
 const styles = StyleSheet.create({
   text: {
     marginLeft: 5,
-    marginTop: 20,
-    fontSize: 20
-
+    fontSize: 19
   },
   container: {
     alignItems: "center"
+  },
+  infoContainer: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 10
+  },
+  buttonContainer: {
+    alignItems:"center",
+
   }
 
 });

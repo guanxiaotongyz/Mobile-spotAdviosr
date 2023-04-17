@@ -53,10 +53,10 @@ const CityApi = ({location}) => {
 
 const styles = StyleSheet.create({
   name: {
-    fontSize: 15,
+    fontSize: 20,
     marginLeft: 5,
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 20,
     alignSelf: "center"
   },
   temperature: {

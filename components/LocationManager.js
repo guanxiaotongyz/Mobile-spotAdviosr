@@ -6,7 +6,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import CityApi from "./CityApi";
 import PressableButton from "./PressableButton";
 import { colors } from "../helper/helper";
-import {mapkey} from "@env";
+import { mapkey } from "@env";
 
 
 export default function LocationManager() {
@@ -75,23 +75,29 @@ export default function LocationManager() {
   return (
     <View style={{ marginTop: 10 }}>
       {location && (
-        <Image
-          source={{
-            uri: `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:L%7C${location.latitude},${location.longitude}&key=${key}`,
-          }}
-          style={{ width: "100%", height: 200 }}
-          resizeMode="contain"
-        />
+        <PressableButton
+          style={styles.item}
+          pressHandler={locationSelectionHandler}
+        >
+          <View>
+            {location && (
+              <Image
+                source={{
+                  uri: `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:L%7C${location.latitude},${location.longitude}&key=${key}`,
+                }}
+                style={{ width: "100%", height: 200 }}
+                resizeMode="contain"
+              />
+            )}
+          </View>
+        </PressableButton>
       )}
       <View>
         <PressableButton pressHandler={locateUserHandler} style={styles.button1}>
           <Text>Locate me</Text>
         </PressableButton>
-        <PressableButton pressHandler={locationSelectionHandler} style={styles.button2}>
-          <Text>Choose on the map</Text>
-        </PressableButton>
       </View>
-      <Text>============================================</Text>
+      <View style={{ borderBottomWidth: 2, borderColor: 'black' }} />
 
       {location ? (
         <>

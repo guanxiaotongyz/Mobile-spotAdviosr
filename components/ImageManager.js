@@ -44,14 +44,6 @@ export default function ImageManager({ imageUriHandler }) {
   return (
     <View>
       <Button title="Camera" onPress={imageHandler} />
-      {/* {imageUri && (
-        <Image
-          source={{
-            uri: imageUri,
-          }}
-          style={{ height: 100, width: 100 }}
-        />
-      )} */}
     </View>
   );
 }
