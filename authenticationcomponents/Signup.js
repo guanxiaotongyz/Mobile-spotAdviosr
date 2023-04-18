@@ -65,7 +65,13 @@ export default function Signup({ navigation }) {
     }
   };
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={"position"}
+      keyboardVerticalOffset={20}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {/* <View style={styles.container}> */}
       <Card
         height={650}
         backgroundColor={colors.WHITE}
@@ -139,7 +145,9 @@ export default function Signup({ navigation }) {
         </View>
       </Card>
       {/* <Button title="Schedule Notification" onPress={scheduleNotificationUserHandler} /> */}
-    </View>
+    {/* </View> */}
+    </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 

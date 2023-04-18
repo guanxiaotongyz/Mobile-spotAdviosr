@@ -96,7 +96,10 @@ const SpotDetails = (props) => {
   console.log("=====review in SpotDetail component ======", review);
 
   return (
-    <View>
+    <KeyboardAvoidingView
+    behavior={"position"}
+    keyboardVerticalOffset={20}
+     >
       {imageURL && (
         <Image source={{ uri: imageURL }} style={{ width: '100%', height: 300 }} />
       )}
@@ -144,8 +147,7 @@ const SpotDetails = (props) => {
 
         <ReviewList review={review} spotItem={spotItem} />
     
-    </View>
-
+    </KeyboardAvoidingView>
   );
 };
 
