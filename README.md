@@ -33,20 +33,20 @@ This was made with Expo, so you need it to run. To do it, run:
 
 <img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Login.png" height="300" alt="loginpage"/>
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Signup.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Signup.png" height="300" alt="signuppage"/>
 
 
 
 ### 2. Home page
 - Show users the spots already in the firebase written by other users.
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Home.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Home.png" height="300" alt="homepage"/>
 
 
 ### 2. Add the spot page
 - Allow users to add the spot
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/AddSpot.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/AddSpot.png" height="300" alt="addspotpage"/>
 
   
 ### 3. Spot details page
@@ -54,24 +54,24 @@ This was made with Expo, so you need it to run. To do it, run:
 - Allow user to write the reviews
 - After pressing the spots on the home page
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/SpotDetails.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/SpotDetails.png" height="300" alt="spotdetailspage"/>
   
 ### 4. Edit review page
 - allow users to edit reviews.
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/EditReview.png"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/EditReview.png" height="300" alt="editreviewpage"/>
 
 ### 5. Nearby spots page
 - Show the users of spots in the same city based on their location after getting the access.
 - Can also use maker to see the other city spots
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Location.png" height="300" alt="loginpage"/>
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/LocationMaker.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Location.png" height="300" alt="nearbypage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Locationmaker.png" height="300" alt="nearbymakerpage"/>
 
-### 6. Nearby spots page
+### 6. Favorite page
 - Show the users of spots they add favorite tags.
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Favorite.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Favorite.png" height="300" alt="favoritepage"/>
 
 
 
