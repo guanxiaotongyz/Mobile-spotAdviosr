@@ -79,7 +79,7 @@ This was made with Expo, so you need it to run. To do it, run:
 
 
 <img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Notification.jpeg" height="300" alt="notifacationpage"/>
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Notification2.jpeg" height="300" alt="notifacationpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Notifacation2.jpeg" height="300" alt="notifacationpage"/>
 
 
 
