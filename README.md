@@ -76,7 +76,7 @@ This was made with Expo, so you need it to run. To do it, run:
 ### 7. Profile
 - Show the user's information.
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Profile.jpeg" height="300" alt="profileimage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Profile.png" height="300" alt="profileimage"/>
 
 ### 8. Notification
 - Remind user to add their fist spot to share after signup.
