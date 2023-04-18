@@ -17,7 +17,7 @@ projectId = "trip-advisor-curd"
 storageBucket =  "trip-advisor-curd.appspot.com"
 messagingSenderId = "843970286871"
 appId =  "1:843970286871:web:6d6a6dc2cfa5e3087d1352"
-mapkey = "AIzaSyAUqj-MaSuFP8gaFozOAQB5Ri_Zogz9YnA"
+mapKey = "AIzaSyAUqj-MaSuFP8gaFozOAQB5Ri_Zogz9YnA"
 
 
 This was made with Expo, so you need it to run. To do it, run:
