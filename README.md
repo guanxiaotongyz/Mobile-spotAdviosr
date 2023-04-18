@@ -73,6 +73,12 @@ This was made with Expo, so you need it to run. To do it, run:
 
 <img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Favorite.png" height="300" alt="favoritepage"/>
 
+### 7. Notification
+- Remind user to add their fist spot to share.
+
+
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Notification.jpeg" height="300" alt="notifacationpage"/>
+
 
 
 
