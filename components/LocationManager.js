@@ -75,22 +75,26 @@ export default function LocationManager() {
   return (
     <View style={{ marginTop: 10 }}>
       {location && (
-        <PressableButton
-          style={styles.item}
-          pressHandler={locationSelectionHandler}
-        >
-          <View>
-            {location && (
-              <Image
-                source={{
-                  uri: `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:L%7C${location.latitude},${location.longitude}&key=${key}`,
-                }}
-                style={{ width: "100%", height: 200 }}
-                resizeMode="contain"
-              />
-            )}
-          </View>
-        </PressableButton>
+        <View>
+          <PressableButton
+            style={styles.item}
+            pressHandler={locationSelectionHandler}
+          >
+            <View>
+              {location && (
+                <Image
+                  source={{
+                    uri: `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:L%7C${location.latitude},${location.longitude}&key=${key}`,
+                  }}
+                  style={{ width: "100%", height: 200 }}
+                  resizeMode="contain"
+                />
+              )}
+            </View>
+          </PressableButton>
+          <Text style={{alignSelf:"center", backgroundColor: colors.LIGHTGREY}}>You can press the map to change location!</Text>
+        </View>
+
       )}
       <View>
         <PressableButton pressHandler={locateUserHandler} style={styles.button1}>
