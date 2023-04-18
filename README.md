@@ -119,4 +119,20 @@ In the second iteration, we have done these work below:
 2. Build an interface to an external Web API (City Name API base on location information)
 3. Build camera manager and image picker manager, which user can update the image for spots based on
 
+### Iteration 3
+In the third iteration, we have done these work below:
+- Fix the bugs: Addspots
+- Add the location function marker
+- Update the notification way
+- Update the UI style
 
+### Xiaotong Guan
+1. Fix the image cache in the Addspots.js
+2. Update the notification way
+
+### Yudong Yang
+
+1. Update the UI style
+
+### Yongxiang Chen
+1. Update the location function maker usage
