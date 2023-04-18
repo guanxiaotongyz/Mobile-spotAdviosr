@@ -26,7 +26,7 @@ export default function ImageManager({ imageUriHandler }) {
       return;
     }
     try {
-      const result = await ImagePicker.launchCameraAsync();
+      const result = await ImagePicker.launchCameraAsync({quality: 0.1});
       if (result.assets.length) {
         // let uri = result.assets[0].uri;
         // let res = read_image_from_storage(uri);

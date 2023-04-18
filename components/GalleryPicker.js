@@ -27,7 +27,7 @@ export default function GalleryPicker({ imageUriHandler }) {
       return;
     }
     try {
-      const result = await ImagePicker.launchImageLibraryAsync();
+      const result = await ImagePicker.launchImageLibraryAsync({quality: 0.1});
       if (result.assets.length) {
         // let uri = result.assets[0].uri;
         // let res = read_image_from_storage(uri);

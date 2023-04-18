@@ -97,7 +97,7 @@ const AddSpot = ({ props }) => {
             <Text style={styles.title}></Text>
             <TextInput
                 placeholder="Add description"
-                numberOfLines={3}
+                multiline={true}
                 style={[styles.input, styles.text1]}
                 value={description}
                 onChangeText={(newtext) => {

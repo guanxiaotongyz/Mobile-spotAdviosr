@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, ScrollView, FlatList, Alert } from "react-native";
+import { View, Text, TextInput, ScrollView,  Alert , KeyboardAvoidingView} from "react-native";
 import {
   collection,
   doc,

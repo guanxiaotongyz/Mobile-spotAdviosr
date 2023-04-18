@@ -1,4 +1,12 @@
-import { View, Text, TextInput, Button, Alert, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Alert,
+  StyleSheet,
+  KeyboardAvoidingView,
+} from "react-native";
 import React, { useState } from "react";
 import { auth } from "../firebase/firebase-setup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -23,6 +31,17 @@ export default function Signup({ navigation }) {
     if (password !== confirmPassword) {
       //checking value and type
       Alert.alert("The passwords don't match");
+      return;
+    } else if (
+      email === "" ||
+      password === "" ||
+      confirmPassword === "" ||
+      name === "" ||
+      gender === "" ||
+      age === ""
+    ) {
+      Alert.alert("Please input all informations");
+      return;
     }
     try {
       const userCred = await createUserWithEmailAndPassword(
@@ -58,68 +77,66 @@ export default function Signup({ navigation }) {
         </View>
 
         <View style={styles.inputContainer}>
-        <Text style={styles.text}>Nick name</Text>
-      <TextInput
-        style={styles.input}
-        value={name}
-        autoCapitalize="none"
-        onChangeText={(newName) => {
-          setName(newName);
-        }}
-      />
-      <Text style={styles.text}>Gender</Text>
-      <TextInput
-        style={styles.input}
-        value={gender}
-        autoCapitalize="none"
-        onChangeText={(newGender) => {
-          setGender(newGender);
-        }}
-      />
-      <Text style={styles.text}>Age</Text>
-      <TextInput
-        style={styles.input}
-        value={age}
-        autoCapitalize="none"
-        onChangeText={(newAge) => {
-          setAge(newAge);
-        }}
-      />
-      <Text style={styles.text}>Email</Text>
-      <TextInput
-        style={styles.input}
-        value={email}
-        autoCapitalize="none"
-        onChangeText={(newEmail) => {
-          setEmail(newEmail);
-        }}
-      />
-      <Text style={styles.text}>Password</Text>
-      <TextInput
-        style={styles.input}
-        secureTextEntry={true}
-        autoCapitalize="none"
-        value={password}
-        onChangeText={(newPassword) => {
-          setPassword(newPassword);
-        }}
-      />
-      <Text style={styles.text}>Confirm Password:</Text>
-      <TextInput
-        style={styles.input}
-        secureTextEntry={true}
-        value={confirmPassword}
-        onChangeText={(newPassword) => {
-          setConfirmPassword(newPassword);
-        }}
-      />
-
+          <Text style={styles.text}>Nick name</Text>
+          <TextInput
+            style={styles.input}
+            value={name}
+            autoCapitalize="none"
+            onChangeText={(newName) => {
+              setName(newName);
+            }}
+          />
+          <Text style={styles.text}>Gender</Text>
+          <TextInput
+            style={styles.input}
+            value={gender}
+            autoCapitalize="none"
+            onChangeText={(newGender) => {
+              setGender(newGender);
+            }}
+          />
+          <Text style={styles.text}>Age</Text>
+          <TextInput
+            style={styles.input}
+            value={age}
+            autoCapitalize="none"
+            onChangeText={(newAge) => {
+              setAge(newAge);
+            }}
+          />
+          <Text style={styles.text}>Email</Text>
+          <TextInput
+            style={styles.input}
+            value={email}
+            autoCapitalize="none"
+            onChangeText={(newEmail) => {
+              setEmail(newEmail);
+            }}
+          />
+          <Text style={styles.text}>Password</Text>
+          <TextInput
+            style={styles.input}
+            secureTextEntry={true}
+            autoCapitalize="none"
+            value={password}
+            onChangeText={(newPassword) => {
+              setPassword(newPassword);
+            }}
+          />
+          <Text style={styles.text}>Confirm Password:</Text>
+          <TextInput
+            style={styles.input}
+            secureTextEntry={true}
+            value={confirmPassword}
+            onChangeText={(newPassword) => {
+              setConfirmPassword(newPassword);
+            }}
+          />
         </View>
         <View style={styles.buttonContainer}>
-        <MyButton text="Sign up" onPress={signupHandler} width={50}/>
-      <Button title="Already a user? Login" onPress={loginHandler} />
+          <MyButton text="Sign up" onPress={signupHandler} width={50} />
+          <Button title="Already a user? Login" onPress={loginHandler} />
         </View>
-
       </Card>
       {/* <Button title="Schedule Notification" onPress={scheduleNotificationUserHandler} /> */}
     </View>
@@ -130,7 +147,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center"
+    alignItems: "center",
   },
   card: {
     alignSelf: "center",
@@ -145,30 +162,30 @@ const styles = StyleSheet.create({
     marginTop: 3,
     padding: 9,
     borderRadius: 5,
-    height: 45
+    height: 45,
   },
   label: {
     fontSize: 30,
     fontWeight: "bold",
     marginLeft: "7%",
-    marginTop: "3%"
+    marginTop: "3%",
   },
   inputContainer: {
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   buttonContainer: {
     marginTop: 20,
-    alignItems: "center"
+    alignItems: "center",
   },
   newerContainer: {
-    flexDirection: "row"
+    flexDirection: "row",
   },
   text: {
     fontSize: 15,
     marginLeft: "7%",
     alignSelf: "flex-start",
     marginTop: 7,
-    marginBottom: 3
-  }
+    marginBottom: 3,
+  },
 });
