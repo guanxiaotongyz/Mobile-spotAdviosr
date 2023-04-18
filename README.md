@@ -29,6 +29,7 @@ This was made with Expo, so you need it to run. To do it, run:
 ## Structure of the App
 ### 1. Signin or Signup page
 - Users have to lognin to review all the spots written by other users.
+- If users don't have an account, users can just sign up for one.
 
 <img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Login.png" height="300" alt="loginpage"/>
 
@@ -36,23 +37,24 @@ This was made with Expo, so you need it to run. To do it, run:
 
 
 
-### 1. Home page
-- show users the spots already in the firebase.
+### 2. Home page
+- Show users the spots already in the firebase written by other users.
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/Home.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Home.png" height="300" alt="loginpage"/>
 
 
 ### 2. Add the spot page
-- allow users to add the spot
+- Allow users to add the spot
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/AddSpot.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/AddSpot.png" height="300" alt="loginpage"/>
 
   
 ### 3. Spot details page
-- allow user to see the details of the spot, including the picture and reviews
-- allow user to write the reviews
+- Allow user to see the details of the spot, including the picture and reviews
+- Allow user to write the reviews
+- After pressing the spots on the home page
 
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/SpotDetails.png"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/SpotDetails.png" height="300" alt="loginpage"/>
   
 ### 4. Edit review page
 - allow users to edit reviews.
@@ -60,14 +62,19 @@ This was made with Expo, so you need it to run. To do it, run:
 <img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/EditReview.png"/>
 
 ### 5. Nearby spots page
-- show the users of spots in the same city based on their location after getting the access.
-<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/spotsnearby.jpg"/>
-<img src=https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/dev_iter_update_delete_basic/pictures/spotsnearby.jpg />
+- Show the users of spots in the same city based on their location after getting the access.
+- Can also use maker to see the other city spots
+
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Location.png" height="300" alt="loginpage"/>
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/LocationMaker.png" height="300" alt="loginpage"/>
+
+### 6. Nearby spots page
+- Show the users of spots they add favorite tags.
+
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Favorite.png" height="300" alt="loginpage"/>
 
 
 
-### 5. Nearby spots page
-- show the users of spots in the same city based on their location after getting the access.
 
 
   
