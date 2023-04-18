@@ -17,6 +17,7 @@ projectId = "trip-advisor-curd"
 storageBucket =  "trip-advisor-curd.appspot.com"
 messagingSenderId = "843970286871"
 appId =  "1:843970286871:web:6d6a6dc2cfa5e3087d1352"
+mapkey = "AIzaSyAUqj-MaSuFP8gaFozOAQB5Ri_Zogz9YnA"
 
 
 This was made with Expo, so you need it to run. To do it, run:
@@ -26,6 +27,15 @@ This was made with Expo, so you need it to run. To do it, run:
 
 
 ## Structure of the App
+### 1. Signin or Signup page
+- Users have to lognin to review all the spots written by other users.
+
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Login.png" height="300" alt="loginpage"/>
+
+<img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Signup.png" height="300" alt="loginpage"/>
+
+
+
 ### 1. Home page
 - show users the spots already in the firebase.
 
