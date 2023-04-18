@@ -53,6 +53,7 @@ This was made with Expo, so you need it to run. To do it, run:
 - Allow user to see the details of the spot, including the picture and reviews
 - Allow user to write the reviews
 - After pressing the spots on the home page
+- User just can update or delete their own review(they can not be change others' reviews)
 
 <img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/SpotDetails.png" height="300" alt="spotdetailspage"/>
   
