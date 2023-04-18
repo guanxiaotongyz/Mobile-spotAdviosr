@@ -6,14 +6,14 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import CityApi from "./CityApi";
 import PressableButton from "./PressableButton";
 import { colors } from "../helper/helper";
-import { mapkey } from "@env";
+import { mapKey } from "@env";
 
 
 export default function LocationManager() {
   const navigation = useNavigation();
   const route = useRoute();
   console.log(route.params);
-  const key = mapkey;
+  const key = mapKey;
 
   useEffect(() => {
     async function fetchLocation() {
