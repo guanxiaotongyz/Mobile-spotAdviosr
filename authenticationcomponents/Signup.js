@@ -70,7 +70,6 @@ export default function Signup({ navigation }) {
       keyboardVerticalOffset={20}
       style={styles.container}
     >
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
     {/* <View style={styles.container}> */}
       <Card
         height={650}
@@ -146,7 +145,6 @@ export default function Signup({ navigation }) {
       </Card>
       {/* <Button title="Schedule Notification" onPress={scheduleNotificationUserHandler} /> */}
     {/* </View> */}
-    </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 }
