@@ -80,8 +80,8 @@ This was made with Expo, so you need it to run. To do it, run:
 <img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Profile.png" height="300" alt="profileimage"/>
 
 ### 8. Notification
-- Remind user to add their fist spot to share after signup.
-- Reming user to check other user's reviews after usrer add spot.
+- Remind user to add their fist spot to share after signup one day.
+- Reming user to check other user's reviews after usrer add spot three days.
 
 
 <img src="https://github.com/guanxiaotongyz/Mobile-spotAdviosr/blob/main/pictures/Notification.jpeg" height="300" alt="notifacationpage"/>
