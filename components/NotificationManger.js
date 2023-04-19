@@ -30,8 +30,8 @@ export async function scheduleNotificationHandler() {
         // data: { url: "https://www.google.com"  },
       },
       trigger: {
-        // hour: 78,
-        seconds: 1,
+        hour: 78,
+        // seconds: 1,
       },
     });
   }
@@ -54,7 +54,8 @@ export async function scheduleNotificationUserHandler() {
 
       },
       trigger: {
-        seconds: 1,
+        hour: 24,
+        // seconds: 1,
       },
     });
   }
