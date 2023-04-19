@@ -214,6 +214,6 @@ const styles = StyleSheet.create({
   },
   addbutton: {
     flexDirection: "row",
-    justifyContent: "space-left",
+    // justifyContent: "space-left",
   },
 });
