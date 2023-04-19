@@ -1,5 +1,5 @@
 # Mobile-spotAdvisor
-Intro youtube link: https://www.youtube.com/watch?v=UZuLkRSpOc4
+Intro youtube link: https://www.youtube.com/watch?v=6eGxyeqqpyI
 
 - **Group**: 8
 - **Members**:
