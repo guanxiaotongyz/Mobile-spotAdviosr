@@ -1,5 +1,6 @@
 # Mobile-spotAdvisor
 Intro youtube link: https://www.youtube.com/watch?v=6eGxyeqqpyI
+Slide link: https://northeastern-my.sharepoint.com/:p:/r/personal/yang_yud_northeastern_edu/_layouts/15/Doc.aspx?sourcedoc=%7B629DCBA6-9337-4622-A28E-A868C38B5495%7D&file=Presentation-CS5520.pptx&action=edit&mobileredirect=true&DefaultItemOpen=1&login_hint=yang.yud%40northeastern.edu&ct=1682207513400&wdOrigin=OFFICECOM-WEB.START.EDGEWORTH&cid=8391a500-d233-4d63-b946-ea99d7b52e27&wdPreviousSessionSrc=HarmonyWeb&wdPreviousSession=3f6d89cc-68cc-4cc2-bb4f-10ce79d8b3b0
 
 - **Group**: 8
 - **Members**:
